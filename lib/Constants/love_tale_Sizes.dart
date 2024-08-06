@@ -61,4 +61,14 @@ class LoveTaleSizes{
     return getWidth;
   }
 
+  double getDesktopPadding(){
+    double getPadding = Get.width ;
+    if (isDesktopFun()) {
+      getPadding = Get.width / 3; // Desktop
+    } else {
+      getPadding = Get.width; // Tablet
+    }
+    return getPadding;
+  }
+
 }

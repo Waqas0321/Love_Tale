@@ -48,6 +48,7 @@ class PersonalInfoScreen extends StatelessWidget {
                 width: contentWidth,
                 padding: EdgeInsets.all(LoveTaleSizes.defaultPadding),
                 child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -318,7 +319,7 @@ class PersonalInfoScreen extends StatelessWidget {
                         fontSize: 18.0,
                         height: 56.0,
                         // Custom height
-                        width: 400.0, // Custom width
+                        width: contentWidth / 1.3, // Custom width
                       ),
                       SizedBox(height: LoveTaleSizes.spaceBTWItems * 1.3),
                     ],

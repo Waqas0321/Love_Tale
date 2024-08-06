@@ -62,51 +62,54 @@ class DiscoverGridView extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(18.0)),
-                            child: Image.asset(
-                              controller.users[index]['image']!,
-                              height: 139.0,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(18.0)),
+                              child: Image.asset(
+                                controller.users[index]['image']!,
+                                height: 139.0,
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(height: 6),
-                              Text(
-                                controller.users[index]['name']!,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 16.0,
-                                  color: isSelected ? Colors.white : Colors.black,
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.location_on,
-                                      color: isSelected ? Colors.white : Colors.pink,
-                                      size: 15.0),
-                                  SizedBox(width: 4.0),
-                                  Text(
-                                    controller.users[index]['distance']!,
-                                    style: TextStyle(
-                                      color: isSelected ? Colors.white : Colors.black54,
-                                      fontSize: 12.0,
-                                    ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(height: 6),
+                                Text(
+                                  controller.users[index]['name']!,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 16.0,
+                                    color: isSelected ? Colors.white : Colors.black,
                                   ),
-                                ],
-                              ),
-                              SizedBox(height: 1.0),
-                            ],
-                          ),
-                        ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.location_on,
+                                        color: isSelected ? Colors.white : Colors.pink,
+                                        size: 15.0),
+                                    SizedBox(width: 4.0),
+                                    Text(
+                                      controller.users[index]['distance']!,
+                                      style: TextStyle(
+                                        color: isSelected ? Colors.white : Colors.black54,
+                                        fontSize: 12.0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 1.0),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   );

@@ -1,5 +1,7 @@
 import 'package:blur/blur.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
@@ -74,92 +76,94 @@ class CardDetailView extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Center(
-                            child: Card(
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              elevation: 2,
-                              child: Container(
-                                height: 392,
-                                width: 330,
-                                child: Stack(
-                                  children: [
-                                    // Image Background with Conditional Blur
-                                    Container(
-                                      height: 392,
-                                      width: 330,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20.0),
-                                        image: DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: AssetImage(user["image"]!),
-                                        ),
-                                      ),
-                                      child: Obx(() {
-                                        double blurAmount = 0;
-                                        Color blurColor = Colors.white;
-
-                                        if (controller.swipeDirection.value ==
-                                            'CardSwiperDirection.left') {
-                                          blurAmount = 5;
-                                          blurColor = Color(0xff9b9c9f)
-                                              .withOpacity(0.5);
-                                        } else if (controller
-                                            .swipeDirection.value ==
-                                            'CardSwiperDirection.right') {
-                                          blurAmount = 5;
-                                          blurColor =
-                                              Color(0xff9f7772);
-                                        }
-
-                                        return Blur(
-                                          colorOpacity: 0,
-                                          blur: blurAmount,
-                                          blurColor: blurColor!,
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                              BorderRadius.circular(20.0),
-                                              color: Colors.transparent,
-                                            ),
+                          Expanded(
+                            child: Center(
+                              child: Card(
+                                color: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                elevation: 2,
+                                child: Container(
+                                  height: 392,
+                                  width: 300,
+                                  child: Stack(
+                                    children: [
+                                      // Image Background with Conditional Blur
+                                      Container(
+                                        height: 392,
+                                        width: 330,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(20.0),
+                                          image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image: AssetImage(user["image"]!),
                                           ),
-                                        );
-                                      }),
-                                    ),
-                                    // Center Icon with Animation
-                                    Positioned.fill(
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: AnimatedOpacity(
-                                          opacity: controller.swipeDirection
-                                              .value.isNotEmpty
-                                              ? 1
-                                              : 0,
-                                          duration: Duration(milliseconds: 300),
-                                          child: controller.swipeDirection
-                                              .value ==
-                                              'CardSwiperDirection.left'
-                                              ? Image.asset(
-                                            "assets/images/cancel.png",
-                                            height: 100,
-                                            width: 100,
-                                            color: Colors.white,
-                                          )
-                                              : controller.swipeDirection
-                                              .value ==
-                                              'CardSwiperDirection.right'
-                                              ? Icon(
-                                            Icons.favorite,
-                                            color: AppColors.pink,
-                                            size: 100,
-                                          )
-                                              : Container(),
+                                        ),
+                                        child: Obx(() {
+                                          double blurAmount = 0;
+                                          Color blurColor = Colors.white;
+
+                                          if (controller.swipeDirection.value ==
+                                              'CardSwiperDirection.left') {
+                                            blurAmount = 5;
+                                            blurColor = Color(0xff9b9c9f)
+                                                .withOpacity(0.5);
+                                          } else if (controller
+                                              .swipeDirection.value ==
+                                              'CardSwiperDirection.right') {
+                                            blurAmount = 5;
+                                            blurColor =
+                                                Color(0xff9f7772);
+                                          }
+
+                                          return Blur(
+                                            colorOpacity: 0,
+                                            blur: blurAmount,
+                                            blurColor: blurColor!,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(20.0),
+                                                color: Colors.transparent,
+                                              ),
+                                            ),
+                                          );
+                                        }),
+                                      ),
+                                      // Center Icon with Animation
+                                      Positioned.fill(
+                                        child: Align(
+                                          alignment: Alignment.center,
+                                          child: AnimatedOpacity(
+                                            opacity: controller.swipeDirection
+                                                .value.isNotEmpty
+                                                ? 1
+                                                : 0,
+                                            duration: Duration(milliseconds: 300),
+                                            child: controller.swipeDirection
+                                                .value ==
+                                                'CardSwiperDirection.left'
+                                                ? Image.asset(
+                                              "assets/images/cancel.png",
+                                              height: 100,
+                                              width: 100,
+                                              color: Colors.white,
+                                            )
+                                                : controller.swipeDirection
+                                                .value ==
+                                                'CardSwiperDirection.right'
+                                                ? Icon(
+                                              Icons.favorite,
+                                              color: AppColors.pink,
+                                              size: 100,
+                                            )
+                                                : Container(),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
