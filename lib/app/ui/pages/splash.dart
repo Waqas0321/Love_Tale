@@ -14,9 +14,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () {
-      Get.offNamed('/policies');
-    });
+    // Timer(Duration(seconds: 3), () {
+    //   Get.offNamed('/policies');
+    // });
   }
 
   Widget build(BuildContext context) {

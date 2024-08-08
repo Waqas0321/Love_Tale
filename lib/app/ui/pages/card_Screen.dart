@@ -5,6 +5,8 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
+import 'package:love_tale/app/ui/pages/Auth/chat_screen.dart';
+import 'package:love_tale/app/ui/pages/Auth/gird_screen.dart';
 import '../../controllers/card_Controller.dart';
 import '../../utils/const/app_color.dart';
 import '../../utils/const/app_images.dart';
@@ -47,7 +49,7 @@ class CardDetailView extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: (){
-                        Get.to(Filters());
+                       // Navigator.push(context, MaterialPageRoute(builder: (context) => Filters(),));
                       },
                         child: Image.asset(AppImages.Filter)),
                   ],

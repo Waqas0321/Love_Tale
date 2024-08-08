@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:love_tale/Constants/love_tale_Sizes.dart';
+import 'package:love_tale/app/ui/pages/matchesScreen.dart';
 import 'package:love_tale/app/ui/settings_Screen.dart';
 import '../controllers/auth/filter_controller.dart';
 import '../utils/const/app_color.dart';
@@ -45,7 +46,7 @@ class Filters extends StatelessWidget {
               Spacer(),
               InkWell(
                   onTap: (){
-                    Get.to(Settings());
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Settings(),));
                   },
                   child: Icon(Icons.settings, color: Colors.black54,size: 22,)),
             ],
@@ -84,7 +85,7 @@ class Filters extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                              Get.back();
+                              Navigator.pop(context);
                             },
                             child: Icon(Icons.arrow_back_rounded, color: Colors.pink, size: 27),
                           ),
@@ -485,7 +486,7 @@ class Filters extends StatelessWidget {
                       child: CustomButton(
                         text: "Next",
                         onPressed: () {
-
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Matchesscreen(),));
                         },
                         textColor: Colors.white,
                         borderRadius: 30.0,
