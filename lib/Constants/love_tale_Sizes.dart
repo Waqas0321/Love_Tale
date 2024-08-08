@@ -10,7 +10,7 @@ class LoveTaleSizes{
 
    bool isMobileFun(){
      double screenWidth = Get.width;
-     if(screenWidth >= 10 && screenWidth <= 550){
+     if(screenWidth >= 10 && screenWidth <= 500){
        return true;
      }else{
        return false;
@@ -18,7 +18,7 @@ class LoveTaleSizes{
    }
   bool isDesktopFun(){
     double screenWidth = Get.width;
-    if(screenWidth > 550){
+    if(screenWidth > 500){
       return true;
     }else{
       return false;
