@@ -1,60 +1,89 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:love_tale/app/ui/filters_Screen.dart';
-import 'package:love_tale/app/ui/settings_Screen.dart';
-import 'package:love_tale/app/utils/const/app_color.dart';
-import 'package:love_tale/app/utils/const/app_images.dart';
+import 'package:love_tale/app/ui/pages/likesScreen.dart';
+import 'package:love_tale/app/ui/pages/topPicksScreen.dart';
 
+class MatechesScreen extends StatefulWidget {
+   MatechesScreen({super.key});
 
-class Matchesscreen extends StatelessWidget {
-  const Matchesscreen({super.key});
+  @override
+  State<MatechesScreen> createState() => _MatechesScreenState();
+}
+
+class _MatechesScreenState extends State<MatechesScreen> {
+  String _currentSelection = "Likes";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(67),
-        child: AppBar(
-          automaticallyImplyLeading: false,
-          flexibleSpace: Container(
-            decoration: BoxDecoration(
-              gradient: AppColors.customGradient,
+      body: SafeArea(
+        child: Center(
+          child: Padding(
+            padding:  EdgeInsets.only(top: 30),
+            child: Column(
+              children: [
+                SegmentedButton(
+                  multiSelectionEnabled: false,
+                  showSelectedIcon: false,
+                  segments: [
+                    ButtonSegment(
+                        label: Text("4 Likes"),
+                        value: "Likes"),
+                    ButtonSegment(
+                        label: Text("3 Top Picks"),
+                        value: "TopPicks"),
+
+                  ], selected: {_currentSelection},
+                  onSelectionChanged: (value) {
+                    setState(() {
+                      _currentSelection = value.first;
+                    });
+
+                  },
+                  style: ButtonStyle(
+                      foregroundColor: MaterialStateProperty.resolveWith((states) {
+                        if(states.contains(MaterialState.selected)){
+                          return Colors.white;
+                        }else{
+                          return Colors.black;
+                        }
+                      }),
+                      backgroundColor: MaterialStateProperty.resolveWith((states) {
+                        if(states.contains(MaterialState.selected)){
+                          return Colors.redAccent;
+                        }else{
+                          return Colors.white;
+                        }
+                      },
+                      )
+                  ),
+                ),
+                Expanded(child: _currentSelection == "Likes"? ThreeLikesScreen(): TopPickesScreen())
+              ],
             ),
           ),
-          title: Row(
-            children: [
-              CircleAvatar(
-                radius: 19,
-                backgroundImage: AssetImage(AppImages.Pic6), // Replace with actual image URL
-              ),
-              SizedBox(width: 10),
-              Text(
-                'Celina',
-                style: GoogleFonts.poppins(
-                  fontSize: 17,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              Spacer(),
-              InkWell(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Filters()));
-                  },
-                  child: Image.asset(AppImages.Filter)),
-              SizedBox(width: 8,),
-              InkWell(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Settings(),));
-                  },
-                  child: Icon(Icons.settings, color: Colors.black54,size: 22,)),
-
-            ],
-          ),
-          backgroundColor: Colors.transparent,
-          elevation: 0.5,
         ),
       ),
     );
+    // return Scaffold(
+    //     body: Padding(
+    //   padding: EdgeInsets.only(
+    //       left: MediaQuery.of(context).size.width / 6,
+    //       right: MediaQuery.of(context).size.width / 6),
+    //   child: Column(
+    //     crossAxisAlignment: CrossAxisAlignment.center,
+    //     children: [
+    //       CustomSvgImage(assetPath: "assets/images/startig.svg",height: 150,width: 150, color: Colors.pink,),
+    //       SizedBox(height: MediaQuery.of(context).size.width / 32),
+    //       Text(
+    //         "Matches",
+    //         style: Theme.of(context).textTheme.headlineMedium,
+    //       ),
+    //       SizedBox(height: MediaQuery.of(context).size.width / 30),
+    //       Text(
+    //           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
+    //     ],
+    //   ),
+    // ));
   }
 }

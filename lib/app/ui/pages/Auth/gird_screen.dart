@@ -67,14 +67,16 @@ class DiscoverGridView extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(18.0)),
-                              child: Image.asset(
-                                controller.users[index]['image']!,
-                                height: 139.0,
-                                width: double.infinity,
-                                fit: BoxFit.cover,
+                            Expanded(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(18.0)),
+                                child: Image.asset(
+                                  controller.users[index]['image']!,
+                                  height: 139.0,
+                                  width: double.infinity,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                             Column(

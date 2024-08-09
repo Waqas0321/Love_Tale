@@ -307,19 +307,22 @@ class PersonalInfoScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: LoveTaleSizes.spaceBTWItems),
-                      CustomButton(
-                        text: AppString.done,
-                        onPressed: () {
-                          Get.to(BottomScreen());
-                        },
-                        color: AppColors.pink,
-                        textColor: Colors.white,
-                        borderRadius: 30.0,
-                        padding: 16.0,
-                        fontSize: 18.0,
-                        height: 56.0,
-                        // Custom height
-                        width: contentWidth / 1.3, // Custom width
+                      SizedBox(
+                        width: isDesktop? contentWidth / 1.6 : contentWidth,
+                        child: CustomButton(
+                          text: AppString.done,
+                          onPressed: () {
+                            Get.to(BottomScreen());
+                          },
+                          color: AppColors.pink,
+                          textColor: Colors.white,
+                          borderRadius: 30.0,
+                          padding: 16.0,
+                          fontSize: 18.0,
+                          height: 56.0,
+                          // Custom height
+                          width: contentWidth / 1.3, // Custom width
+                        ),
                       ),
                       SizedBox(height: LoveTaleSizes.spaceBTWItems * 1.3),
                     ],

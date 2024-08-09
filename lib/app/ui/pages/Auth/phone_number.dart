@@ -208,14 +208,9 @@ class PhoneScreen extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           SizedBox(height: LoveTaleSizes.spaceBTWItems,),
-          InkWell(
-            onTap: (){
-              Get.to(OtpScreen());
-            },
-            child: Text(
-              AppString.continuewith,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
-            ),
+          Text(
+            AppString.continuewith,
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
           ),
           SizedBox(height: LoveTaleSizes.spaceBTWItems),
           Text(
@@ -227,10 +222,11 @@ class PhoneScreen extends StatelessWidget {
             onPressed: () {
               Get.back();
             },
-            child: Text(
-              AppString.none_of_the_above,
-              style: TextStyle(fontSize: 18, color: AppColors.pink,fontWeight: FontWeight.w600,),
-            ),
+            child: CustomButton(text: "Continue", onPressed: () => Get.to(OtpScreen()), height: 40, width: 200,borderRadius: 50,),
+            // child: Text(
+            //   AppString.none_of_the_above,
+            //   style: TextStyle(fontSize: 18, color: AppColors.pink,fontWeight: FontWeight.w600,),
+            // ),
           ),
         ],
       ),

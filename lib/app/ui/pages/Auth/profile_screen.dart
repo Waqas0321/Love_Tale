@@ -429,51 +429,53 @@ class MessageBubble extends StatelessWidget {
             backgroundImage: AssetImage(image!),
           ),
         if (!isMe) SizedBox(width: 10),
-        Column(
-          crossAxisAlignment:
-          isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-          children: [
-            Container(
-              constraints: BoxConstraints(
-                  maxWidth: MediaQuery.of(context).size.width * 0.7),
-              margin: EdgeInsets.only(bottom: 5),
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              decoration: BoxDecoration(
-                color: isMe ? AppColors.pink : Colors.grey[100],
-                borderRadius: isMe
-                    ? BorderRadius.only(
-                  topLeft: Radius.circular(19),
-                  topRight: Radius.circular(19),
-                  bottomLeft: Radius.circular(19),
-                  bottomRight: Radius.circular(0),
-                )
-                    : BorderRadius.only(
-                  topLeft: Radius.circular(19),
-                  topRight: Radius.circular(19),
-                  bottomLeft: Radius.circular(0),
-                  bottomRight: Radius.circular(19),
+        Expanded(
+          child: Column(
+            crossAxisAlignment:
+            isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+            children: [
+              Container(
+                constraints: BoxConstraints(
+                    maxWidth: MediaQuery.of(context).size.width * 0.7),
+                margin: EdgeInsets.only(bottom: 5),
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                decoration: BoxDecoration(
+                  color: isMe ? AppColors.pink : Colors.grey[100],
+                  borderRadius: isMe
+                      ? BorderRadius.only(
+                    topLeft: Radius.circular(19),
+                    topRight: Radius.circular(19),
+                    bottomLeft: Radius.circular(19),
+                    bottomRight: Radius.circular(0),
+                  )
+                      : BorderRadius.only(
+                    topLeft: Radius.circular(19),
+                    topRight: Radius.circular(19),
+                    bottomLeft: Radius.circular(0),
+                    bottomRight: Radius.circular(19),
+                  ),
+                ),
+                child: Text(
+                  message,
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    color: Colors.black87,
+                  ),
                 ),
               ),
-              child: Text(
-                message,
-                style: GoogleFonts.poppins(
-                  fontSize: 14,
-                  color: Colors.black87,
+              Padding(
+                padding: EdgeInsets.only(
+                    left: isMe ? 0 : 5, right: isMe ? 5 : 0, bottom: 5),
+                child: Text(
+                  time,
+                  style: GoogleFonts.poppins(
+                    fontSize: 10,
+                    color: Colors.black38,
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                  left: isMe ? 0 : 5, right: isMe ? 5 : 0, bottom: 5),
-              child: Text(
-                time,
-                style: GoogleFonts.poppins(
-                  fontSize: 10,
-                  color: Colors.black38,
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );

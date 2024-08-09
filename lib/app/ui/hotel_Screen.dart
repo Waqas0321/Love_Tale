@@ -7,7 +7,12 @@ import '../controllers/auth/hotel_controller.dart';
 import '../utils/const/app_color.dart';
 import '../utils/const/app_images.dart';
 
-class HotelScreen extends StatelessWidget {
+class HotelScreen extends StatefulWidget {
+  @override
+  State<HotelScreen> createState() => _HotelScreenState();
+}
+
+class _HotelScreenState extends State<HotelScreen> {
   final HotelController controller = Get.put(HotelController());
 
   @override
@@ -92,8 +97,10 @@ class HotelScreen extends StatelessWidget {
                     final isSelected = controller.selectedIndex.value == index;
                     return GestureDetector(
                       onTap: () {
-                        controller.setSelectedIndex(index);
-                        Get.to(() => HotelDetailScreen());
+                        setState(() {
+                          controller.setSelectedIndex(index);
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => HotelDetailScreen(),));
+                        });
                       },
                       child: Card(
                         color: isSelected ? AppColors.pink : Colors.white,
@@ -103,14 +110,16 @@ class HotelScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(18.0)),
-                              child: Image.asset(
-                                controller.hotel[index]['image']!,
-                                height: 139.0,
-                                width: double.infinity,
-                                fit: BoxFit.cover,
+                            Expanded(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(18.0)),
+                                child: Image.asset(
+                                  controller.hotel[index]['image']!,
+                                  height: 139.0,
+                                  width: double.infinity,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                             Column(

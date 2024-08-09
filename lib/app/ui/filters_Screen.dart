@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:love_tale/Constants/love_tale_Sizes.dart';
-import 'package:love_tale/app/ui/pages/matchesScreen.dart';
+import 'package:love_tale/app/ui/pages/matchesMessagesTabBar.dart';
 import 'package:love_tale/app/ui/settings_Screen.dart';
 import '../controllers/auth/filter_controller.dart';
 import '../utils/const/app_color.dart';
@@ -483,17 +483,20 @@ class Filters extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: 10, right: 10, bottom: 16),
-                      child: CustomButton(
-                        text: "Next",
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Matchesscreen(),));
-                        },
-                        textColor: Colors.white,
-                        borderRadius: 30.0,
-                        padding: 14.0,
-                        fontSize: 18.0,
-                        height: 52.0, // Custom height
-                        width: contentWidth / 1.3, // Custom width
+                      child: SizedBox(
+                        width: isDesktop? contentWidth / 1.6 : contentWidth,
+                        child: CustomButton(
+                          text: "Next",
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => MatchesMessagesTabBarScreen(),));
+                          },
+                          textColor: Colors.white,
+                          borderRadius: 30.0,
+                          padding: 14.0,
+                          fontSize: 18.0,
+                          height: 52.0, // Custom height
+                          width: contentWidth / 1.3, // Custom width
+                        ),
                       ),
                     ),
                   ],
