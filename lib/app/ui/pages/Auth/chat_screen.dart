@@ -41,7 +41,7 @@ class ChatScreen extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    Get.back();
+                    Navigator.pop(context);
                   },
                   child: Icon(Icons.arrow_back_rounded,
                       color: Colors.pink, size: 27),

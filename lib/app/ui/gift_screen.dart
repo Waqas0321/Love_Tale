@@ -77,7 +77,7 @@ class GiftScreen extends StatelessWidget {
               children: [
                 InkWell(
                     onTap: () {
-                      Get.back();
+                      Navigator.pop(context);
                     },
                     child: Icon(Icons.arrow_back_outlined, color: AppColors.pink)),
                 SizedBox(width: 104),

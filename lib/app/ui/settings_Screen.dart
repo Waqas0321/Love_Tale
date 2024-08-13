@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:love_tale/Constants/love_tale_Sizes.dart';
+import 'package:love_tale/app/ui/gift_screen.dart';
 import '../controllers/auth/setting_controller.dart';
 import '../utils/const/app_color.dart';
 import '../utils/widgets/app_button.dart';
@@ -95,45 +96,55 @@ class Settings extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
-                                  width: contentWidth / 3,
-                                  height: 56,
-                                  decoration: BoxDecoration(
-                                    gradient: AppColors.customGradient,
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      SizedBox(width: 12),
-                                      Icon(Icons.bolt, color: Colors.white),
-                                      Expanded(
-                                        child: Text('Get Boosts',
-                                            style:
-                                                TextStyle(color: Colors.white)),
-                                      ),
-                                    ],
+                                GestureDetector(
+                                  onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => GiftScreen(),));
+                          },
+                                  child: Container(
+                                    width: contentWidth / 3,
+                                    height: 56,
+                                    decoration: BoxDecoration(
+                                      gradient: AppColors.customGradient,
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        SizedBox(width: 12),
+                                        Icon(Icons.bolt, color: Colors.white),
+                                        Expanded(
+                                          child: Text('Get Boosts',
+                                              style:
+                                                  TextStyle(color: Colors.white)),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                                 SizedBox(width: 20),
-                                Container(
-                                  width: contentWidth / 3,
-                                  height: 56,
-                                  decoration: BoxDecoration(
-                                   gradient: AppColors.customGradient,
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      SizedBox(width: 12),
-                                      Icon(Icons.star, color: Colors.white),
-                                      Expanded(
-                                        child: Text('Get Super Likes',
-                                            style:
-                                                TextStyle(color: Colors.white)),
-                                      ),
-                                    ],
+                                GestureDetector(
+                                  onTap: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => GiftScreen(),));
+                                  },
+                                  child: Container(
+                                    width: contentWidth / 3,
+                                    height: 56,
+                                    decoration: BoxDecoration(
+                                     gradient: AppColors.customGradient,
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        SizedBox(width: 12),
+                                        Icon(Icons.star, color: Colors.white),
+                                        Expanded(
+                                          child: Text('Get Super Likes',
+                                              style:
+                                                  TextStyle(color: Colors.white)),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
