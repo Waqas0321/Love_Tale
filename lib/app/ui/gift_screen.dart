@@ -109,8 +109,8 @@ class GiftScreen extends StatelessWidget {
                     final isSelected = controller.selectedIndex.value == index;
                     return GestureDetector(
                       onTap: () {
-                        controller.setSelectedIndex(index);
-                        Get.to(() => HotelDetailScreen());
+                        // controller.setSelectedIndex(index);
+                        // Get.to(() => HotelDetailScreen());
                       },
                       child: Card(
                         color: isSelected ? AppColors.pink : Colors.white,

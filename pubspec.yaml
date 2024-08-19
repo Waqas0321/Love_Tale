@@ -47,7 +47,7 @@ dependencies:
   card_swiper: ^3.0.1
   flutter_onboarding_slider: ^1.0.11
   firebase_core: ^3.3.0
-#  multi_image_picker2: ^8.0.0
+  #  multi_image_picker2: ^8.0.0
 
 
 
@@ -60,6 +60,8 @@ dependencies:
   country_code_picker: ^3.0.0
   google_fonts:
   flutter_card_swiper: ^7.0.1
+  url_launcher: ^6.3.0
+
 #  flutter_page_view: ^1.1.9
 dev_dependencies:
   flutter_test:

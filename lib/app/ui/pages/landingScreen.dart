@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:love_tale/app/utils/widgets/app_button.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import '../../utils/const/app_color.dart';
 import '../../utils/const/app_images.dart';
-import '../../utils/const/app_strings.dart';
-import '../../utils/widgets/custom_svg_image.dart';
 import 'desktop_personal_info.dart';
 
 class LandingScreen extends StatefulWidget {
@@ -34,7 +32,11 @@ class _LandingScreenState extends State<LandingScreen> {
                       Align(
                           alignment: Alignment.topRight,
                           child: GestureDetector(
-                              onTap: () => Navigator.pop(context),
+                            onTap: () {
+                              launch("https://love-tale-lp-ruqc.vercel.app/",
+                                webOnlyWindowName: '_self',
+                              );
+                            },
                               child: Icon(Icons.cancel_outlined))),
                       Image(image: AssetImage(AppImages.logo), height: 60,width: 60,),
                       Text(
@@ -169,97 +171,19 @@ class _LandingScreenState extends State<LandingScreen> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: Stack(
-        children: [
-          // Background image
-          Positioned.fill(
-            child: Image(
-              image: NetworkImage(
-                  'https://cdn.pixabay.com/photo/2014/12/08/11/49/couple-560783_640.jpg'),
-              fit: BoxFit.cover,
+      child: SafeArea(
+        child: Stack(
+          children: [
+            // Background image
+            Positioned.fill(
+              child: Image(
+                image: AssetImage(
+                    'assets/images/background_landing.PNG'),
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          // Top right buttons
-          // Positioned(
-          //   top: 16,
-          //   right: 16,
-          //   child: Row(
-          //     children: [
-          //       SizedBox(width: 8),
-          //       Container(
-          //         height: 45,
-          //         width: 100,
-          //         decoration: BoxDecoration(
-          //             border: Border.all(width: 1, color: Colors.white),
-          //             color: Colors.transparent),
-          //         child: Center(
-          //             child: Text(
-          //           "Sign Up",
-          //           style: TextStyle(
-          //             color: Colors.white,
-          //             fontSize: 20,
-          //             decoration: TextDecoration.none,
-          //           ),
-          //         )),
-          //       ),
-          //     ],
-          //   ),
-          // ),
-          // Top right text
-          Positioned(
-            top: 16,
-            left: 16,
-            child: Row(
-              children: [
-                Text('LoveTale',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w800,
-                        decoration: TextDecoration.none)),
-                SizedBox(width: 18),
-                Text('Product',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        decoration: TextDecoration.none)),
-                SizedBox(width: 12),
-                Text('Safety',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        decoration: TextDecoration.none)),
-                SizedBox(width: 12),
-                Text('Learn',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        decoration: TextDecoration.none)),
-                SizedBox(width: 12),
-                Text('Download',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        decoration: TextDecoration.none)),
-              ],
-            ),
-          ),
-          // Center text
-          Positioned(
-            top: MediaQuery.of(context).size.height / 2,
-            left: 0,
-            right: 0,
-            child: Text(
-              'Lorem ipsum dolor sit amet, \n consectetur adipiscing elit.  Sed do eiusmod tempor incididunt \n ut labore et dolore magna aliqua.',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 36,
-                  fontWeight: FontWeight.w800,
-                  decoration: TextDecoration.none),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

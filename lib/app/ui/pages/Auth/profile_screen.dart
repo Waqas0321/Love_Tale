@@ -123,13 +123,13 @@ class _CombinedScreenState extends State<CombinedScreen> {
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => GiftScreen(),));
                   },
-                    child: Icon(Icons.card_giftcard,color: Colors.black54,size: 22,)),
-                SizedBox(width: 2,),
+                    child: Icon(Icons.card_giftcard,color: Colors.white,size: 28,)),
+                SizedBox(width: 4,),
                 InkWell(
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => Settings(),));
                   },
-                    child: Icon(Icons.settings, color: Colors.black54,size: 22,)),
+                    child: Icon(Icons.settings, color: Colors.white,size: 28,)),
               ],
             ),
             backgroundColor: Colors.transparent,
