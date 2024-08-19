@@ -26,6 +26,7 @@ class _TopPickesScreenState extends State<TopPickesScreen> {
           children: [
             Text("Upgrade to LovTale Plus for more"),
             Text("Top Pick"),
+            SizedBox(height: 8,),
             Expanded(
               child: Obx(() {
                 return Container(

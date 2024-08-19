@@ -59,7 +59,8 @@ class SwipeScreen extends StatelessWidget {
                               left: 15,
                               child: InkWell(
                                 onTap: () {
-                                  cardDetailController.showSwipeScreen(false); // Update to hide the SwipeScreen
+                                  cardDetailController.showSwipeScreen(false);// Update to hide the SwipeScreen
+                                  Navigator.pop(context);
                                 },
                                 child: Icon(
                                   Icons.arrow_back_rounded,

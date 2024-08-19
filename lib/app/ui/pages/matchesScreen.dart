@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:love_tale/app/ui/pages/likesScreen.dart';
+import 'package:love_tale/app/ui/pages/four_likesScreen.dart';
 import 'package:love_tale/app/ui/pages/topPicksScreen.dart';
 
 class MatechesScreen extends StatefulWidget {
@@ -58,7 +58,7 @@ class _MatechesScreenState extends State<MatechesScreen> {
                       )
                   ),
                 ),
-                Expanded(child: _currentSelection == "Likes"? ThreeLikesScreen(): TopPickesScreen())
+                Expanded(child: _currentSelection == "Likes"? FourLikesScreen(): TopPickesScreen())
               ],
             ),
           ),

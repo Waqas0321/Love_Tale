@@ -51,7 +51,7 @@ class CardDetailView extends StatelessWidget {
                       onTap: (){
                        // Navigator.push(context, MaterialPageRoute(builder: (context) => Filters(),));
                       },
-                        child: Image.asset(AppImages.Filter)),
+                        child: Image.asset(AppImages.Filter,color: Colors.transparent,)),
                   ],
                 ),
               ),
@@ -73,7 +73,7 @@ class CardDetailView extends StatelessWidget {
 
                     return GestureDetector(
                       onTap: () {
-                        controller.showSwipeScreen(true);  // Update to show the SwipeScreen
+                        // controller.showSwipeScreen(true);  // Update to show the SwipeScreen
                       },
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,

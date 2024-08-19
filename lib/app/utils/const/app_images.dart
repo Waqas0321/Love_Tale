@@ -1,7 +1,7 @@
 class AppImages{
   static const String mainImage="assets/images";
   static const String hearts="$mainImage/hearts .svg";
-  static const String logo="$mainImage/logo.svg";
+  static const String logo="$mainImage/logoImage.png";
   static const String apple="$mainImage/apple.png";
 
   static const String Artboard_5="$mainImage/image.png";

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:love_tale/Constants/love_tale_Sizes.dart';
 import 'package:love_tale/app/ui/gift_screen.dart';
+import 'package:love_tale/app/ui/pages/likes_screen.dart';
 import '../controllers/auth/setting_controller.dart';
 import '../utils/const/app_color.dart';
 import '../utils/widgets/app_button.dart';
@@ -25,45 +26,28 @@ class Settings extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 45),
-                SizedBox(
-                  child: isDesktop
-                      ? Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Settings",
-                              style: GoogleFonts.poppins(
-                                fontSize: 23,
-                                color: Colors.black87,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
-                        )
-                      : Row(
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: Icon(Icons.arrow_back_rounded,
-                                  color: Colors.pink, size: 27),
-                            ),
-                            SizedBox(width: 94.5),
-                            Text(
-                              "Settings",
-                              style: GoogleFonts.poppins(
-                                fontSize: 23,
-                                color: Colors.black87,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
+                Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Icon(Icons.arrow_back_rounded,
+                            color: Colors.pink, size: 27),
+                      ),
+                      SizedBox(width: 94.5),
+                      Text(
+                        "Settings",
+                        style: GoogleFonts.poppins(
+                          fontSize: 23,
+                          color: Colors.black87,
+                          fontWeight: FontWeight.w600,
                         ),
-                ),
+                      ),
+                    ],
+                  ),
                 SizedBox(
-                  height: 27,
+                  height: 18,
                 ),
                 Expanded(
                   child: SingleChildScrollView(
@@ -73,20 +57,30 @@ class Settings extends StatelessWidget {
                         children: [
                           Container(
                             height: 87,
-                            width: 380,
+                            width: Get.width / 1.2,
                             padding: EdgeInsets.only(top: 14),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(14),
                               gradient: AppColors.customGradient,
                             ),
                             child: Center(
-                              child: Text(
-                                'Unlimited likes & more!',
-                                style: GoogleFonts.poppins(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: Center(
+                                      child: Text(
+                                        'Unlimited likes & more!',
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 14,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
@@ -98,7 +92,7 @@ class Settings extends StatelessWidget {
                               children: [
                                 GestureDetector(
                                   onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => GiftScreen(),));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => LikesScreen(),));
                           },
                                   child: Container(
                                     width: contentWidth / 3,
@@ -110,9 +104,11 @@ class Settings extends StatelessWidget {
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        SizedBox(width: 12),
-                                        Icon(Icons.bolt, color: Colors.white),
                                         Expanded(
+                                            flex: 1,
+                                            child: Icon(Icons.bolt, color: Colors.white)),
+                                        Expanded(
+                                          flex: 2,
                                           child: Text('Get Boosts',
                                               style:
                                                   TextStyle(color: Colors.white)),
@@ -121,10 +117,10 @@ class Settings extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                SizedBox(width: 20),
+                                SizedBox(width: 18),
                                 GestureDetector(
                                   onTap: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => GiftScreen(),));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => LikesScreen(),));
                                   },
                                   child: Container(
                                     width: contentWidth / 3,
@@ -136,9 +132,11 @@ class Settings extends StatelessWidget {
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        SizedBox(width: 12),
-                                        Icon(Icons.star, color: Colors.white),
                                         Expanded(
+                                            flex: 1,
+                                            child: Icon(Icons.star, color: Colors.white)),
+                                        Expanded(
+                                          flex: 3,
                                           child: Text('Get Super Likes',
                                               style:
                                                   TextStyle(color: Colors.white)),

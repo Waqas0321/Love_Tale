@@ -45,7 +45,7 @@ class _HotelScreenState extends State<HotelScreen> {
               Spacer(),
               InkWell(
                 onTap:(){
-                  Get.to(Settings());
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Settings(),));
                 } ,
                   child: Icon(Icons.settings, color: Colors.black54, size: 22)),
             ],
@@ -65,7 +65,7 @@ class _HotelScreenState extends State<HotelScreen> {
               children: [
                 InkWell(
                     onTap: () {
-                      Get.back();
+                      Navigator.pop(context);
                     },
                     child: Icon(Icons.arrow_back_outlined, color: AppColors.pink)),
                 SizedBox(width: 104),

@@ -43,7 +43,7 @@ class HotelDetailScreen extends StatelessWidget {
               Spacer(),
               InkWell(
                   onTap:(){
-                    Get.to(Settings());
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Settings(),));
                   } ,
                   child: Icon(Icons.settings, color: Colors.black54, size: 22)),
             ],
@@ -67,7 +67,7 @@ class HotelDetailScreen extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: InkWell(
                 onTap: () {
-                  Get.back();
+                  Navigator.pop(context);
                 },
                 child: Icon(
                   Icons.arrow_back_outlined,

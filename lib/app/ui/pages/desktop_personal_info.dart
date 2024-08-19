@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:love_tale/app/utils/const/app_images.dart';
 import '../../bindings/bottom_screen.dart';
 import '../../controllers/personal_controller.dart';
-import '../../utils/const/app_color.dart';
 import '../../utils/const/app_strings.dart';
 import '../../utils/widgets/app_button.dart';
 import '../../utils/widgets/custom_svg_image.dart';
@@ -17,109 +16,158 @@ class DesktopPersonalInfo extends StatefulWidget {
 
 class _DesktopPersonalInfoState extends State<DesktopPersonalInfo> {
   final PersonalInfoController controller = Get.put(PersonalInfoController());
+  late bool isSelectWomen = false;
+  late bool isSelectMen = false;
+  late bool isSelectFemale = false;
+  late bool isSelectMale = false;
+
   void showDialogFunction() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: Container(
-            width: 550,
             child: Padding(
               padding: const EdgeInsets.all(22.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Align(
                         alignment: Alignment.topRight,
                         child: GestureDetector(
                             onTap: () => Navigator.pop(context),
                             child: Icon(Icons.cancel_outlined))),
-                    CustomSvgImage(
-                      assetPath: AppImages.logo,
-                      height: 40,
-                      width: 40,
-                      color: Color(0xfff980ae),
-                    ),
+                    Image(image: AssetImage(AppImages.logo), height: 60,width: 60,),
                     Text(
                       "Welcome to LoveTale",
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
-                            Icon(Icons.check, color: Colors.pink,),
-                            SizedBox(width: 12,),
-                            Text(AppString.beRespectfulTitle,style: Theme.of(context).textTheme.headlineMedium,)
+                            Icon(
+                              Icons.check,
+                              color: Colors.pink,
+                            ),
+                            SizedBox(
+                              width: 12,
+                            ),
+                            Text(
+                              AppString.beRespectfulTitle,
+                              style: Theme.of(context).textTheme.headlineMedium,
+                            )
                           ],
                         ),
-                        Text(AppString.beRespectfulDescription,)
+                        Text(
+                          AppString.beRespectfulDescription,
+                        )
                       ],
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
-                            Icon(Icons.check, color: Colors.pink,),
-                            SizedBox(width: 12,),
-                            Text(AppString.beRespectfulTitle,style: Theme.of(context).textTheme.headlineMedium,)
+                            Icon(
+                              Icons.check,
+                              color: Colors.pink,
+                            ),
+                            SizedBox(
+                              width: 12,
+                            ),
+                            Text(
+                              AppString.beRespectfulTitle,
+                              style: Theme.of(context).textTheme.headlineMedium,
+                            )
                           ],
                         ),
-                        Text(AppString.stayHonestDescription,)
+                        Text(
+                          AppString.stayHonestDescription,
+                        )
                       ],
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
-                            Icon(Icons.check, color: Colors.pink,),
-                            SizedBox(width: 12,),
-                            Text(AppString.protectPrivacyTitle,style: Theme.of(context).textTheme.headlineMedium,)
+                            Icon(
+                              Icons.check,
+                              color: Colors.pink,
+                            ),
+                            SizedBox(
+                              width: 12,
+                            ),
+                            Text(
+                              AppString.protectPrivacyTitle,
+                              style: Theme.of(context).textTheme.headlineMedium,
+                            )
                           ],
                         ),
-                        Text(AppString.protectPrivacyDescription,)
+                        Text(
+                          AppString.protectPrivacyDescription,
+                        )
                       ],
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
-                            Icon(Icons.check, color: Colors.pink,),
-                            SizedBox(width: 12,),
-                            Text(AppString.staySafeTitle,style: Theme.of(context).textTheme.headlineMedium,)
+                            Icon(
+                              Icons.check,
+                              color: Colors.pink,
+                            ),
+                            SizedBox(
+                              width: 12,
+                            ),
+                            Text(
+                              AppString.staySafeTitle,
+                              style: Theme.of(context).textTheme.headlineMedium,
+                            )
                           ],
                         ),
-                        Text(AppString.staySafeDescription,)
+                        Text(
+                          AppString.staySafeDescription,
+                        )
                       ],
                     ),
-                    SizedBox(height: 30,),
-                    CustomButton(text: "I Agree", onPressed: () {
-                      Navigator.pop(context);
-                    }, height: 45, width: Get.width / 3.5,
+                    SizedBox(
+                      height: 30,
                     ),
-
-                  ]
-
-              ),
+                    CustomButton(
+                      text: "I Agree",
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      height: 45,
+                      width: Get.width / 3.5,
+                    ),
+                  ]),
             ),
           ),
         );
       },
     );
   }
-
 
   @override
   void initState() {
@@ -128,7 +176,6 @@ class _DesktopPersonalInfoState extends State<DesktopPersonalInfo> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       showDialogFunction();
     });
-
   }
 
   @override
@@ -139,24 +186,19 @@ class _DesktopPersonalInfoState extends State<DesktopPersonalInfo> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(
+              height: 15,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                CustomSvgImage(
-                  assetPath: AppImages.logo,
-                  height: 40,
-                  width: 40,
-                  color: Color(0xfff980ae),
-                ),
+                Image(image: AssetImage(AppImages.logo), height: 40,width: 40,),
                 Text(
                   "Love Tale",
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ],
-            ),
-            SizedBox(
-              height: 8,
             ),
             Divider(
               color: Colors.black,
@@ -210,7 +252,24 @@ class _DesktopPersonalInfoState extends State<DesktopPersonalInfo> {
                               height: 34,
                               width: 140,
                               child: OutlinedButton(
-                                  onPressed: () {}, child: Text("Woman")),
+                                  style: ButtonStyle(
+                                      backgroundColor: MaterialStatePropertyAll(
+                                          isSelectWomen
+                                              ? Colors.pink
+                                              : null)),
+                                  onPressed: () {
+                                    setState(() {
+                                      isSelectWomen = true;
+                                      isSelectMen = false;
+                                    });
+                                  },
+                                  child: Text(
+                                    "Woman",
+                                    style: TextStyle(
+                                        color: isSelectWomen
+                                            ? Colors.white
+                                            : Colors.black),
+                                  )),
                             ),
                             SizedBox(
                               width: 12,
@@ -219,7 +278,24 @@ class _DesktopPersonalInfoState extends State<DesktopPersonalInfo> {
                               height: 34,
                               width: 140,
                               child: OutlinedButton(
-                                  onPressed: () {}, child: Text("Man")),
+                                  style: ButtonStyle(
+                                      backgroundColor: MaterialStatePropertyAll(
+                                          isSelectMen
+                                              ? Colors.pink
+                                              : null)),
+                                  onPressed: () {
+                                    setState(() {
+                                      isSelectMen = true;
+                                      isSelectWomen = false;
+                                    });
+                                  },
+                                  child: Text(
+                                    "Men",
+                                    style: TextStyle(
+                                        color: isSelectMen
+                                            ? Colors.white
+                                            : Colors.black),
+                                  )),
                             ),
                           ],
                         )
@@ -266,7 +342,24 @@ class _DesktopPersonalInfoState extends State<DesktopPersonalInfo> {
                               height: 34,
                               width: 140,
                               child: OutlinedButton(
-                                  onPressed: () {}, child: Text("Female")),
+                                  style: ButtonStyle(
+                                      backgroundColor: MaterialStatePropertyAll(
+                                          isSelectFemale
+                                              ? Colors.pink
+                                              : Colors.transparent)),
+                                  onPressed: () {
+                                    setState(() {
+                                      isSelectFemale = true;
+                                      isSelectMale = false;
+                                    });
+                                  },
+                                  child: Text(
+                                    "Female",
+                                    style: TextStyle(
+                                        color: isSelectFemale
+                                            ? Colors.white
+                                            : Colors.black),
+                                  )),
                             ),
                             SizedBox(
                               width: 12,
@@ -275,7 +368,24 @@ class _DesktopPersonalInfoState extends State<DesktopPersonalInfo> {
                               height: 34,
                               width: 140,
                               child: OutlinedButton(
-                                  onPressed: () {}, child: Text("Male")),
+                                  style: ButtonStyle(
+                                      backgroundColor: MaterialStatePropertyAll(
+                                          isSelectMale
+                                              ? Colors.pink
+                                              : Colors.transparent)),
+                                  onPressed: () {
+                                    setState(() {
+                                      isSelectMale = true;
+                                      isSelectFemale = false;
+                                    });
+                                  },
+                                  child: Text(
+                                    "Male",
+                                    style: TextStyle(
+                                        color: isSelectMale
+                                            ? Colors.white
+                                            : Colors.black),
+                                  )),
                             ),
                           ],
                         )
@@ -290,13 +400,34 @@ class _DesktopPersonalInfoState extends State<DesktopPersonalInfo> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Obx(
-                      () => InPutTextFiled(
-                        text: "Date of Birth",
-                        labelText:
-                            "${controller.selectedBirthday.value != null ? "${controller.selectedBirthday.value!.day} / ${controller.selectedBirthday.value!.month} / ${controller.selectedBirthday.value!.year}" : 'DD / MM / YYYY'}",
-                        width: 250,
-                        sufiIcon: true,
-                      ),
+                      () => Stack(children: [
+                        InPutTextFiled(
+                          enabeled: false,
+                          text: "Date of Birth",
+                          labelText:
+                              "${controller.selectedBirthday.value != null ? "${controller.selectedBirthday.value!.day} / ${controller.selectedBirthday.value!.month} / ${controller.selectedBirthday.value!.year}" : 'DD / MM / YYYY'}",
+                          width: 250,
+                          sufiIcon: true,
+                        ),
+                        Positioned(
+                            right: 0,
+                            top: 28,
+                            child: IconButton(
+                          onPressed: () async {
+                            DateTime? pickedDate = await showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(1900),
+                              lastDate: DateTime.now(),
+                            );
+                            if (pickedDate != null) {
+                              controller.selectedBirthday.value = pickedDate;
+                              print(pickedDate); // Update the observable variable
+                            }
+                          },
+                          icon: Icon(Icons.calendar_month_outlined),
+                        ))
+                      ]),
                     ),
                     SizedBox(
                       width: 28,
@@ -326,17 +457,17 @@ class _DesktopPersonalInfoState extends State<DesktopPersonalInfo> {
                     SizedBox(
                       width: 8,
                     ),
-                    ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.pink)),
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => BottomScreen(),));
-                        },
-                        child: Text(
-                          "Submit",
-                          style: TextStyle(color: Colors.white),
-                        )),
+                    CustomButton(
+                      text: "Submit",
+                      onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BottomScreen(),
+                          )),
+                      height: 30,
+                      width: 150,
+                      borderRadius: 30,
+                    ),
                     SizedBox(
                       width: 8,
                     ),
@@ -391,6 +522,9 @@ class InPutTextFiled extends StatelessWidget {
             enabled: enabeled,
             decoration: InputDecoration(
                 hintText: labelText,
+                hintStyle: TextStyle(
+                    color: sufiIcon? Colors.black: null,
+                ),
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black, width: 2.0),
                   borderRadius: BorderRadius.circular(5.0),
@@ -399,22 +533,7 @@ class InPutTextFiled extends StatelessWidget {
                   borderSide: BorderSide(color: Colors.black, width: 2.0),
                   borderRadius: BorderRadius.circular(5.0),
                 ),
-                suffixIcon: sufiIcon
-                    ? InkWell(
-                        onTap: () async {
-                          DateTime? pickedDate = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(1900),
-                            lastDate: DateTime.now(),
-                          );
-                          if (pickedDate != null) {
-                            controller.selectedBirthday.value = pickedDate;
-                            print(pickedDate); // Update the observable variable
-                          }
-                        },
-                        child: Icon(Icons.calendar_month_outlined))
-                    : null),
+                    ),
             cursorColor: Colors.black,
             cursorWidth: 2,
           ),

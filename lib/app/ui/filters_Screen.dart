@@ -66,40 +66,26 @@ class Filters extends StatelessWidget {
                 width: contentWidth,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      child: isDesktop? Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Filters",
-                            style: GoogleFonts.poppins(
-                              fontSize: 22,
-                              color: Colors.black87,
-                              fontWeight: FontWeight.w700,
-                            ),
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Icon(Icons.arrow_back_rounded, color: Colors.pink, size: 27),
+                        ),
+                        SizedBox(width: 115),
+                        Text(
+                          "Filters",
+                          style: GoogleFonts.poppins(
+                            fontSize: 22,
+                            color: Colors.black87,
+                            fontWeight: FontWeight.w700,
                           ),
-                        ],
-                      ):Row(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: Icon(Icons.arrow_back_rounded, color: Colors.pink, size: 27),
-                          ),
-                          SizedBox(width: 105),
-                          Text(
-                            "Filters",
-                            style: GoogleFonts.poppins(
-                              fontSize: 22,
-                              color: Colors.black87,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                     Expanded(
                       child: SingleChildScrollView(
