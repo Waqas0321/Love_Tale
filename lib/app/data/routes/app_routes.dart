@@ -8,6 +8,7 @@ import 'package:love_tale/app/ui/filters_Screen.dart';
 import 'package:love_tale/app/ui/pages/Auth/discover_screen.dart';
 import 'package:love_tale/app/ui/pages/desktop_personal_info.dart';
 import 'package:love_tale/app/ui/pages/landingScreen.dart';
+import 'package:love_tale/app/ui/pages/splash2.dart';
 import '../../ui/pages/Auth/chat_screen.dart';
 import '../../ui/pages/Auth/location_Screen.dart';
 import '../../ui/pages/Auth/login.dart';
@@ -28,7 +29,7 @@ class AppRoutes {
   static const String initalroute = "/";
   static const String initalrouteTwo = "/polices";
   static getApproutes() => [
-        GetPage(name: "/", page: () => LandingScreen()),
+        GetPage(name: "/", page: () => SplashScreen()),
         GetPage(name: "/polices", page: () => Policies()),
         GetPage(name: "/login_screen", page: () => LoginScreen()),
         GetPage(name: "/phone_number", page: () => PhoneScreen()),

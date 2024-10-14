@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:love_tale/Constants/love_tale_Sizes.dart';
 import 'package:love_tale/app/ui/pages/Auth/personal_screen.dart';
+import 'package:love_tale/app/ui/pages/personal_details/firstName_screen.dart';
 import '../../../controllers/otp_controller.dart';
 import '../../../utils/const/app_color.dart';
 import '../../../utils/const/app_strings.dart';
@@ -210,7 +211,7 @@ class OtpScreen extends StatelessWidget {
                       text: "Submit",
                       borderRadius: 32,
                       onPressed: () {
-                        Get.to(PersonalInfoScreen());
+                        Get.to(FirstNameScreen());
                         _controller.submitCode();
                       },
                       height: LoveTaleSizes.buttonHeight,

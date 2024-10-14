@@ -4,6 +4,7 @@ class AppColors {
  static const Color blue = Color(0xff504a9f);
  static const Color pink = Color(0xfff06562);
  static const Color white = Color(0xFFFFFFFF);
+ static const Color purple = Color(0xff9430cf);
 
  static const LinearGradient customGradient = LinearGradient(
   colors: [

@@ -1,12 +1,10 @@
-import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:love_tale/app/ui/pages/Auth/login.dart';
-import 'package:love_tale/app/ui/pages/matchesMessagesTabBar.dart';
 import 'package:love_tale/app/ui/pages/policies.dart';
-
-import '../../utils/const/app_images.dart';
+import 'package:love_tale/app/ui/pages/splash2.dart';
+import 'package:video_player/video_player.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -14,26 +12,47 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  late VideoPlayerController _videoPlayerController;
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () {
-      Get.off(Policies());
+    _videoPlayerController =
+        VideoPlayerController.asset('assets/videos/splash_video.mp4')
+          ..initialize().then((_) {
+            _videoPlayerController.play();
+            setState(() {});
+          });
+
+    // Navigate to home after video completes
+    _videoPlayerController.addListener(() {
+      if (_videoPlayerController.value.position >=
+          _videoPlayerController.value.duration) {
+        navigateToSplash2();
+      }
     });
   }
 
+  void navigateToSplash2() {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (_) => Splash2()),
+    );
+  }
+
+  @override
+  void dispose() {
+    _videoPlayerController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // backgroundColor: Color(0xffFF4B3A),
-      body: Container(
-        width: 414,
-        height: 896,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(AppImages.Splash),fit: BoxFit.cover,
-            )
+    return Stack(fit: StackFit.expand, children: [
+      Center(
+        child: AspectRatio(
+          aspectRatio: _videoPlayerController.value.aspectRatio,
+          child: VideoPlayer(_videoPlayerController),
         ),
       ),
-    );
+    ]);
   }
 }
