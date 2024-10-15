@@ -7,6 +7,7 @@ import '../../../utils/const/app_color.dart';
 import '../../../utils/const/app_images.dart';
 import '../../gift_screen.dart';
 import '../../settings_Screen.dart';
+import '../personal_details/custom_chart_row.dart';
 
 class CombinedScreen extends StatefulWidget {
   final String username;
@@ -178,6 +179,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                 location: widget.location,
                 image: widget.image,
               ),
+            SimplePercentageRow(),
             Expanded(
               child: ListView.builder(
                 padding: EdgeInsets.symmetric(horizontal: 20),

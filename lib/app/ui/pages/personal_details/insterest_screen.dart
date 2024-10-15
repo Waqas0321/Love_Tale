@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
+import 'package:love_tale/app/ui/pages/Auth/location_Screen.dart';
+import 'package:love_tale/app/ui/pages/personal_details/location_screen.dart';
 class InterestScreen extends StatefulWidget {
   const InterestScreen({super.key});
 
@@ -102,7 +104,9 @@ class _InterestScreenState extends State<InterestScreen> {
                                 backgroundColor: Colors.black,
                                 foregroundColor: Colors.white
                               ),
-                              onPressed: () {}, child: Text('Continue',style: TextStyle(fontWeight: FontWeight.w600),))),
+                              onPressed: () {
+                                Get.to(LocationMapScreen());
+                              }, child: Text('Continue',style: TextStyle(fontWeight: FontWeight.w600),))),
                 ))
           ],
         ),

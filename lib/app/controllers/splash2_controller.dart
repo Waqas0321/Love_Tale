@@ -22,7 +22,7 @@ class Splash2Controller extends GetxController {
       containerPositionLeft.value = 150; // New position
     });
     Timer(const Duration(seconds: 8), () {
-      containerPositionTop.value = 400; // New position
+      containerPositionTop.value = 450; // New position
       containerPositionLeft.value = 20; // New position
     });
   }

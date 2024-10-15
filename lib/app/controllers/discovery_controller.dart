@@ -44,9 +44,10 @@ class DiscoverGridController extends GetxController {
       'image': AppImages.Pic1,
     },
   ].obs;
+  RxBool isSelected = false.obs;
 
   var selectedIndex = (-1).obs;
-
+  // Method to set selected index
   void setSelectedIndex(int index) {
     selectedIndex.value = index;
   }

@@ -48,11 +48,12 @@ dependencies:
   flutter_onboarding_slider: ^1.0.11
   firebase_core: ^3.3.0
   video_player: ^2.9.2
+  flutter_map: ^7.0.2
+  fl_chart: ^0.69.0
+  latlong2: ^0.9.1
+  speedometer_chart: ^1.0.8
+
   #  multi_image_picker2: ^8.0.0
-
-
-
-
 
   #  card_swiper: ^3.0.1
 #  flutter_location_search: ^1.0.0 # Use the appropriate version
@@ -62,6 +63,9 @@ dependencies:
   google_fonts:
   flutter_card_swiper: ^7.0.1
   url_launcher: ^6.3.0
+  shared_preferences: ^2.3.2
+  firebase_auth: ^5.3.1
+  cloud_firestore: ^5.4.4
 
 #  flutter_page_view: ^1.1.9
 dev_dependencies:

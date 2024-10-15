@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:love_tale/Constants/love_tale_Sizes.dart';
 import '../../../controllers/auth/chat_controller.dart';
 import '../../chat_item.dart';
+import '../personal_details/custom_chart_row.dart';
 void main() {
   runApp(MyApp());
 }
