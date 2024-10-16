@@ -29,7 +29,7 @@ class ChatItem extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 20,
-              backgroundImage: AssetImage(image),
+              backgroundImage: NetworkImage(image),
             ),
             if (isOnline)
               Positioned(

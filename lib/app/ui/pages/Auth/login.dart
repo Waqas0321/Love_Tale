@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:love_tale/app/bindings/bottom_screen.dart';
 import 'package:love_tale/app/ui/pages/Auth/phone_number.dart';
 import '../../../../Constants/love_tale_Sizes.dart';
 import '../../../controllers/auth/login.dart';
@@ -117,8 +118,15 @@ class LoginScreen extends GetView<LoginController> {
                             ),
                             Expanded(
                               child: ElevatedButton(
-                                onPressed: () {
+                                onPressed: () async {
                                   controller.onContinueWithGoogle();
+                                  final user = await controller.signInWithGoogle();
+                                  if(user != null){
+                                    Get.snackbar('Congratulations ${user.displayName}', 'Welcome to the Love Tale');
+                                    Get.to(BottomScreen());
+                                  }else{
+                                    Get.snackbar('Error', 'Not SignIn on Love Tale');
+                                  }
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.white,

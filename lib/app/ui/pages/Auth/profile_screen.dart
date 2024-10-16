@@ -1,3 +1,7 @@
+import 'dart:math';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,30 +33,40 @@ class CombinedScreen extends StatefulWidget {
 }
 
 class _CombinedScreenState extends State<CombinedScreen> {
-  List<Map<String, String>> messages = [
-    {"message": "Hi!", "time": "9:27 AM", "isMe": "true", "date": "2024-07-29"},
-    {
-      "message": "How are you?",
-      "time": "12:15 PM",
-      "isMe": "false",
-      "date": "2024-07-28"
-    },
-    {
-      "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "time": "12:20 PM",
-      "isMe": "true",
-      "date": "2024-07-27"
-    },
-    {
-      "message":
-      "Bibendum magna tincidunt pellentesque diam platea tincidunt duis.",
-      "time": "12:30 PM",
-      "isMe": "false",
-      "date": "2024-07-27"
-    },
-  ];
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  User? user;
+
+  void getMessqage() {
+    setState(() {
+      final now = DateTime.now();
+    });
+  }
+
+  void getCurrentUser() {
+    user = _auth.currentUser;
+  } // Get the current logged-in user
+
+  List<MessageBubble> messages = [];
 
   final TextEditingController _controller = TextEditingController();
+
+  void sendMessage() {
+    setState(() {
+      if (_controller.text.isNotEmpty) {
+        _firestore.collection('Messages').add({
+          'text': _controller.text,
+          'sender': user?.email,
+          'time': FieldValue.serverTimestamp(),
+          'userName': user!.displayName,
+          'image': user!.photoURL,
+        });
+        _controller.clear();
+      }
+    });
+  }
+
   final ImagePicker _picker = ImagePicker();
 
   Future<void> _pickImage(ImageSource source) async {
@@ -61,8 +75,6 @@ class _CombinedScreenState extends State<CombinedScreen> {
       // Handle the picked image file
     }
   }
-
-
 
   String _formatDate(String date) {
     final messageDate = DateTime.parse(date);
@@ -74,23 +86,30 @@ class _CombinedScreenState extends State<CombinedScreen> {
     return DateFormat('MMM d, yyyy').format(messageDate);
   }
 
-  void _sendMessage(String text) {
-    setState(() {
-      final now = DateTime.now();
-      messages.add({
-        "message": text,
-        "time": "${now.hour}:${now.minute} ${now.hour >= 12 ? 'PM' : 'AM'}",
-        "isMe": "true",
-        "date": DateFormat('yyyy-MM-dd').format(now),
-      });
-      _controller.clear();
-    });
+  // void _sendMessage(String text) {
+  //   setState(() {
+  //     final now = DateTime.now();
+  //     messages.add({
+  //       "message": text,
+  //       "time": "${now.hour}:${now.minute} ${now.hour >= 12 ? 'PM' : 'AM'}",
+  //       "isMe": "true",
+  //       "date": DateFormat('yyyy-MM-dd').format(now),
+  //     });
+  //     _controller.clear();
+  //   });
+  // }
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
   }
+  final showProfileSection = true;
+  final showTopBar = false;
 
   @override
   Widget build(BuildContext context) {
-    final showProfileSection = messages.length <= 4;
-    final showTopBar = messages.length >= 5;
+
 
     return SafeArea(
       child: Scaffold(
@@ -108,7 +127,8 @@ class _CombinedScreenState extends State<CombinedScreen> {
               children: [
                 CircleAvatar(
                   radius: 19,
-                  backgroundImage: AssetImage(AppImages.Pic6), // Replace with actual image URL
+                  backgroundImage: AssetImage(
+                      AppImages.Pic6), // Replace with actual image URL
                 ),
                 SizedBox(width: 10),
                 Text(
@@ -121,16 +141,30 @@ class _CombinedScreenState extends State<CombinedScreen> {
                 ),
                 Spacer(),
                 InkWell(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => GiftScreen(),));
-                  },
-                    child: Icon(Icons.card_giftcard,color: Colors.white,size: 28,)),
-                SizedBox(width: 4,),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => GiftScreen(),
+                          ));
+                    },
+                    child: Icon(
+                      Icons.card_giftcard,
+                      color: Colors.white,
+                      size: 28,
+                    )),
+                SizedBox(
+                  width: 4,
+                ),
                 InkWell(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Settings(),));
-                  },
-                    child: Icon(Icons.settings, color: Colors.white,size: 28,)),
+                    onTap: () {
+                      // Navigator.push(context, MaterialPageRoute(builder: (context) =>Setting() ,));
+                    },
+                    child: Icon(
+                      Icons.settings,
+                      color: Colors.white,
+                      size: 28,
+                    )),
               ],
             ),
             backgroundColor: Colors.transparent,
@@ -143,7 +177,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
               Container(
                 color: Colors.white,
                 // elevation: 0,
-                padding: EdgeInsets.only(left: 13,right: 10,top: 10),
+                padding: EdgeInsets.only(left: 13, right: 10, top: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -159,8 +193,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                       style: GoogleFonts.poppins(
                           fontSize: 18,
                           color: Colors.black87,
-                          fontWeight: FontWeight.w600
-                      ),
+                          fontWeight: FontWeight.w600),
                     ),
 
                     CircleAvatar(
@@ -170,7 +203,6 @@ class _CombinedScreenState extends State<CombinedScreen> {
                   ],
                 ),
               ),
-
             if (showProfileSection)
               ProfileSection(
                 username: widget.username,
@@ -180,64 +212,94 @@ class _CombinedScreenState extends State<CombinedScreen> {
                 image: widget.image,
               ),
             SimplePercentageRow(),
-            Expanded(
-              child: ListView.builder(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                itemCount: messages.length,
-                itemBuilder: (context, index) {
-                  final message = messages[index];
-                  final dateHeader = index == 0 ||
-                      messages[index]['date'] != messages[index - 1]['date']
-                      ? _formatDate(message['date']!)
-                      : null;
-
-                  return Column(
-                    crossAxisAlignment: message["isMe"] == "true"
-                        ? CrossAxisAlignment.end
-                        : CrossAxisAlignment.start,
-                    children: [
-                      if (dateHeader != null)
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: Center(
-                            child: Container(
-                              width: 90,
-                              height: 30,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.2),
-                                    spreadRadius: 0.2,
-                                    blurRadius: 2,
-                                    offset: Offset(0, 3),
-                                  ),
-                                ],
-                              ),
-                              child: Center(
-                                child: Text(
-                                  dateHeader,
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 12.5,
-                                    color: AppColors.pink,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+            // Expanded(
+            //   child: ListView.builder(
+            //     padding: EdgeInsets.symmetric(horizontal: 20),
+            //     itemCount: messages.length,
+            //     itemBuilder: (context, index) {
+            //       final message = messages[index];
+            //       final dateHeader = index == 0 ||
+            //               messages[index]['date'] != messages[index - 1]['date']
+            //           ? _formatDate(message['date']!)
+            //           : null;
+            //
+            //       return Column(
+            //         crossAxisAlignment: message[user?.email] == "true"
+            //             ? CrossAxisAlignment.end
+            //             : CrossAxisAlignment.start,
+            //         children: [
+            //           if (dateHeader != null)
+            //             Padding(
+            //               padding: const EdgeInsets.symmetric(vertical: 10),
+            //               child: Center(
+            //                 child: Container(
+            //                   width: 90,
+            //                   height: 30,
+            //                   decoration: BoxDecoration(
+            //                     color: Colors.white,
+            //                     borderRadius: BorderRadius.circular(20),
+            //                     boxShadow: [
+            //                       BoxShadow(
+            //                         color: Colors.grey.withOpacity(0.2),
+            //                         spreadRadius: 0.2,
+            //                         blurRadius: 2,
+            //                         offset: Offset(0, 3),
+            //                       ),
+            //                     ],
+            //                   ),
+            //                   child: Center(
+            //                     child: Text(
+            //                       dateHeader,
+            //                       style: GoogleFonts.poppins(
+            //                         fontSize: 12.5,
+            //                         color: AppColors.pink,
+            //                       ),
+            //                     ),
+            //                   ),
+            //                 ),
+            //               ),
+            //             ),
+                      Expanded(
+                        child: StreamBuilder(
+                          stream: _firestore
+                              .collection('Messages')
+                              .orderBy('time')
+                              .snapshots(),
+                          builder: (context, snapshot) {
+                            if(!snapshot.hasData){
+                              return Center(child: CircularProgressIndicator());
+                            }else{
+                              final messages = snapshot.data!.docs.reversed.map((doc) {
+                                return Message.fromDocument(doc);
+                              }).toList();
+                              List<MessageBubble> messgesBubbles = messages.map((e) {
+                                final currentUser = user?.email;
+                                String formattedDate(DateTime dateTime) {
+                                  // Define your desired format (e.g., 'yyyy-MM-dd HH:mm:ss')
+                                  final DateFormat formatter = DateFormat('hh:mm a');
+                                  return formatter.format(dateTime);
+                                }
+                                return MessageBubble(
+                                  message: e.text,
+                                  isMe: e.sender == currentUser,
+                                  time: formattedDate(e.time.toDate()), // Convert timestamp to a readable date/time string
+                                  image: e.sender != currentUser ? widget.image : null,
+                                );
+                              },).toList();
+                              return ListView(
+                                reverse: true,
+                                children: messgesBubbles,
+                              );
+                            }
+                          },
                         ),
-                      MessageBubble(
-                        message: message["message"]!,
-                        isMe: message["isMe"] == "true",
-                        time: message["time"]!,
-                        image: message["isMe"] == "false" ? widget.image : null,
                       ),
-                    ],
-                  );
-                },
-              ),
-            ),
+
+            //         ],
+            //       );
+            //     },
+            //   ),
+            // ),
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -259,13 +321,15 @@ class _CombinedScreenState extends State<CombinedScreen> {
                 child: Row(
                   children: [
                     SizedBox(width: 8),
-                    Icon(Icons.add_circle_rounded, color: AppColors.pink, size: 21),
+                    Icon(Icons.add_circle_rounded,
+                        color: AppColors.pink, size: 21),
                     SizedBox(width: 3),
                     InkWell(
                       onTap: () {
                         _pickImage(ImageSource.camera);
                       },
-                      child: Icon(Icons.camera_alt_rounded, color: Colors.pink, size: 21),
+                      child: Icon(Icons.camera_alt_rounded,
+                          color: Colors.pink, size: 21),
                     ),
                     SizedBox(width: 3),
                     InkWell(
@@ -308,9 +372,10 @@ class _CombinedScreenState extends State<CombinedScreen> {
                     SizedBox(width: 7),
                     InkWell(
                       onTap: () {
-                        if (_controller.text.trim().isNotEmpty) {
-                          _sendMessage(_controller.text.trim());
-                        }
+                        sendMessage();
+                        // if (_controller.text.trim().isNotEmpty) {
+                        //   _sendMessage(_controller.text.trim());
+                        // }
                       },
                       child: Icon(Icons.send, color: AppColors.pink),
                     ),
@@ -349,7 +414,11 @@ class ProfileSection extends StatelessWidget {
         Align(
           alignment: Alignment.topLeft,
           child: IconButton(
-            icon: Icon(Icons.arrow_back, color: AppColors.pink,size: 26,),
+            icon: Icon(
+              Icons.arrow_back,
+              color: AppColors.pink,
+              size: 26,
+            ),
             onPressed: () {
               Navigator.pop(context);
             },
@@ -434,7 +503,7 @@ class MessageBubble extends StatelessWidget {
         Expanded(
           child: Column(
             crossAxisAlignment:
-            isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+                isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
             children: [
               Container(
                 constraints: BoxConstraints(
@@ -445,17 +514,17 @@ class MessageBubble extends StatelessWidget {
                   color: isMe ? AppColors.pink : Colors.grey[100],
                   borderRadius: isMe
                       ? BorderRadius.only(
-                    topLeft: Radius.circular(19),
-                    topRight: Radius.circular(19),
-                    bottomLeft: Radius.circular(19),
-                    bottomRight: Radius.circular(0),
-                  )
+                          topLeft: Radius.circular(19),
+                          topRight: Radius.circular(19),
+                          bottomLeft: Radius.circular(19),
+                          bottomRight: Radius.circular(0),
+                        )
                       : BorderRadius.only(
-                    topLeft: Radius.circular(19),
-                    topRight: Radius.circular(19),
-                    bottomLeft: Radius.circular(0),
-                    bottomRight: Radius.circular(19),
-                  ),
+                          topLeft: Radius.circular(19),
+                          topRight: Radius.circular(19),
+                          bottomLeft: Radius.circular(0),
+                          bottomRight: Radius.circular(19),
+                        ),
                 ),
                 child: Text(
                   message,
@@ -480,6 +549,28 @@ class MessageBubble extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+class Message {
+  final String text;
+  final String sender;
+  final String image;
+  final String username;
+  final Timestamp time;
+
+
+  Message({required this.text, required this.sender, required this.image, required this.time, required this.username,});
+
+  // Factory method to create a Message from a Firestore document
+  factory Message.fromDocument(DocumentSnapshot doc) {
+    final data = doc.data() as Map<String, dynamic>;
+    return Message(
+      text: data['text'] ?? '',
+      username: data['userName'] ?? '',
+      image: data['image'] ?? '',
+      sender: data['sender'] ?? '',
+      time: data['time'] ?? Timestamp.now(),
     );
   }
 }

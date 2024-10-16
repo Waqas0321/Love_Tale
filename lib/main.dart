@@ -1,15 +1,18 @@
 import 'dart:io';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:love_tale/firebase_options.dart';
 import 'app/bindings/app_bindings.dart';
 import 'app/data/routes/app_routes.dart';
 
 
-void main() {
-
-
-
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {

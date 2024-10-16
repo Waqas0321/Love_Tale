@@ -31,7 +31,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       default:
         throw UnsupportedError(
@@ -64,6 +64,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '821323672364',
     projectId: 'abcdefg-c2895',
     storageBucket: 'abcdefg-c2895.appspot.com',
+    androidClientId: '821323672364-2hgriavtt2286cka31r3k7t5dpqgde4v.apps.googleusercontent.com',
+    iosClientId: '821323672364-2npq2msi9rru7urqhn1hjltsotdbv4l9.apps.googleusercontent.com',
     iosBundleId: 'com.example.loveTale',
   );
 
@@ -73,6 +75,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '821323672364',
     projectId: 'abcdefg-c2895',
     storageBucket: 'abcdefg-c2895.appspot.com',
+    androidClientId: '821323672364-2hgriavtt2286cka31r3k7t5dpqgde4v.apps.googleusercontent.com',
+    iosClientId: '821323672364-2npq2msi9rru7urqhn1hjltsotdbv4l9.apps.googleusercontent.com',
     iosBundleId: 'com.example.loveTale',
   );
 
@@ -85,4 +89,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'abcdefg-c2895.appspot.com',
     measurementId: 'G-9WMTCC1LSD',
   );
+
 }
