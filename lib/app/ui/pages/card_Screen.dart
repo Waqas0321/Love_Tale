@@ -49,9 +49,9 @@ class CardDetailView extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: (){
-                       // Navigator.push(context, MaterialPageRoute(builder: (context) => Filters(),));
+                       Navigator.push(context, MaterialPageRoute(builder: (context) => Filters(),));
                       },
-                        child: Image.asset(AppImages.Filter,color: Colors.transparent,)),
+                        child: Image.asset(AppImages.Filter,color: Colors.black,)),
                   ],
                 ),
               ),

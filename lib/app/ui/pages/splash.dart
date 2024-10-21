@@ -48,9 +48,13 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Stack(fit: StackFit.expand, children: [
       Center(
-        child: AspectRatio(
-          aspectRatio: _videoPlayerController.value.aspectRatio,
-          child: VideoPlayer(_videoPlayerController),
+        child: Container(
+          height: Get.height,
+          width: Get.width,
+          child: AspectRatio(
+            aspectRatio: _videoPlayerController.value.aspectRatio,
+            child: VideoPlayer(_videoPlayerController),
+          ),
         ),
       ),
     ]);

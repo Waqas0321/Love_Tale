@@ -53,7 +53,7 @@ class PhoneScreen extends StatelessWidget {
                       ),
                       SizedBox(height: LoveTaleSizes.spaceBTWItems),
                       SizedBox(
-                        width: contentWidth / 1.4,
+                        width: contentWidth,
                         child: Row(
                           children: <Widget>[
                             SizedBox(width: LoveTaleSizes.spaceBTWItems),
@@ -72,20 +72,34 @@ class PhoneScreen extends StatelessWidget {
                                     showOnlyCountryWhenClosed: false,
                                     alignLeft: true,
                                     padding: EdgeInsets.zero,
-                                    showFlag: false, // Hide the flag
+                                    showFlag: true, // Show the flag
                                     textStyle: TextStyle(
                                       fontSize: 16,
                                     ),
                                     builder: (countryCode) {
-                                      return Text(
-                                        "${countryCode!.code.toString()}  ${countryCode.dialCode.toString()}",
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.black,
-                                        ),
+                                      return Row(
+                                        children: [
+                                          // Display the flag image
+                                          Image.asset(
+                                            countryCode!.flagUri??'',
+                                            package: 'country_code_picker',
+                                            width: 32.0,
+                                            height: 24.0,
+                                          ),
+                                          SizedBox(width: 8), // Add some spacing
+                                          // Display the dial code
+                                          Text(
+                                            "${countryCode.code}",
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        ],
                                       );
                                     },
                                   ),
+
                                   Divider(
                                     color: Colors.black54,
                                     thickness: 1.0,
@@ -154,7 +168,7 @@ class PhoneScreen extends StatelessWidget {
                                 text: AppString.learn_what_happend_when_number_change,
                                 style: GoogleFonts.poppins(
                                   textStyle: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.black87,
                                   ),

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:love_tale/app/ui/pages/Auth/location_Screen.dart';
 import 'package:love_tale/app/ui/pages/personal_details/location_screen.dart';
+
+import '../../../../Constants/love_tale_Sizes.dart';
+import '../../../utils/widgets/app_button.dart';
 class InterestScreen extends StatefulWidget {
   const InterestScreen({super.key});
 
@@ -33,11 +37,11 @@ class _InterestScreenState extends State<InterestScreen> {
                     Text(
                       "Who would you like to see?",
                       style:
-                          TextStyle(fontSize: 26, fontWeight: FontWeight.w800),
+                          GoogleFonts.poppins(fontSize: 21, fontWeight: FontWeight.w800),
                     ),
                     Text(
                       "We want to make sure we find the right for you. You can always update this later",
-                      style: TextStyle(fontSize: 18),
+                      style: GoogleFonts.poppins(fontSize: 16),
                     ),
                     SizedBox(height: 18),
                     Container(
@@ -90,7 +94,7 @@ class _InterestScreenState extends State<InterestScreen> {
               ),
             ),
             Positioned(
-              bottom: 20,
+                bottom: 20,
                 left: 0,
                 right: 0,
                 child: Padding(
@@ -98,15 +102,17 @@ class _InterestScreenState extends State<InterestScreen> {
                   child: SizedBox(
                     height: 55,
                     width: double.infinity,
-                      child:
-                          ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.black,
-                                foregroundColor: Colors.white
-                              ),
-                              onPressed: () {
-                                Get.to(LocationMapScreen());
-                              }, child: Text('Continue',style: TextStyle(fontWeight: FontWeight.w600),))),
+                    child: CustomButton(
+                      text: "Continue",
+                      borderRadius: 32,
+                      onPressed: () {
+                        Get.to(LocationMapScreen());
+
+                      },
+                      height: LoveTaleSizes.buttonHeight,
+                      width: 327,
+                    ),
+                  ),
                 ))
           ],
         ),

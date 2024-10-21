@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:love_tale/app/controllers/auth/login.dart';
 
 import '../../controllers/auth/editprofile_controller.dart';
 import '../../utils/const/app_color.dart';
@@ -11,6 +12,7 @@ import '../../utils/widgets/app_button.dart';
 
 class EditProfile extends StatelessWidget {
   final EditProfileController controller = Get.put(EditProfileController());
+  final LoginController _loginController = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
@@ -68,10 +70,11 @@ class EditProfile extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 10, right: 10, bottom: 13),
               child: CustomButton(
-                text: AppString.done,
+                text: 'Log Out',
                 onPressed: () {
-                  controller.updateProfile();
+                  // controller.updateProfile();
                   // Implement navigation or other actions here
+                  _loginController.signOut();
                 },
                 textColor: Colors.white,
                 borderRadius: 30.0,

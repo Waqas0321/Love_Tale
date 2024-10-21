@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:love_tale/app/ui/pages/personal_details/picture_upload_screen.dart';
+
+import '../../../utils/const/app_color.dart';
 
 class GenderScreen extends StatefulWidget {
   const GenderScreen({super.key});
@@ -12,22 +15,34 @@ class GenderScreen extends StatefulWidget {
 class _GenderScreenState extends State<GenderScreen> {
   static bool male =  false;
   static bool female =  false;
+  static bool others =  false;
   void maleTogle(){
     setState(() {
       male = !male;
       if(male){
         female = false;
+        others = false;
       }
     });
 
   }
-  void femaleTogle(){
+  void femaleTogle() {
     setState(() {
       female = !female;
-      if(female){
+      if (female) {
         male = false;
+        others = false;
       }
     });
+  }
+    void othersTogle(){
+      setState(() {
+        others = !others;
+        if(others){
+          male = false;
+          female = false;
+        }
+      });
 
   }
 
@@ -38,25 +53,34 @@ class _GenderScreenState extends State<GenderScreen> {
         onPressed: () {
           Get.to(PictureUploadScreen());
         },
-        child: Icon(Icons.navigate_next_sharp,color: Colors.white,size: 32,), // You can use any icon you prefer
+        child: Container(
+            height: 150,
+            width: 150,
+            decoration: BoxDecoration(
+                gradient: AppColors.customGradient,
+                shape: BoxShape.circle
+
+            ),
+            child: Icon(Icons.navigate_next_sharp,color: Colors.white,size: 32,)), // You can use any icon you prefer
         shape: CircleBorder(), // Ensures the button is circular
         backgroundColor: Colors.black, // Set the background color
         elevation: 6, // Add elevation for a shadow effect
       ),
       body: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 30, top: 30),
+            padding: const EdgeInsets.only( top: 30),
             child: Column(
               children: [
                 Text(
                   "How do you identify?",
-                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800),
+                  style: GoogleFonts.poppins(fontSize: 21, fontWeight: FontWeight.w800),
                 ),
                 Text(
                   "Pick which best describe you.",
-                  style: TextStyle(fontSize: 18),
+                  style: GoogleFonts.poppins(fontSize: 16),
                 ),
               ],
             ),
@@ -79,7 +103,7 @@ class _GenderScreenState extends State<GenderScreen> {
                         maleTogle();
                       });
 
-                }, child: Text('Male',style: TextStyle(fontSize: 21,color:male? Colors.white:Colors.black),)),
+                }, child: Text('Male',style: GoogleFonts.poppins(fontSize: 18,color:male? Colors.white:Colors.black),)),
               ),
               SizedBox(height: 8),
               SizedBox(
@@ -91,12 +115,19 @@ class _GenderScreenState extends State<GenderScreen> {
                     ),
                     onPressed: () {
                       femaleTogle();
-                }, child: Text('Female',style: TextStyle(fontSize: 21,color: female? Colors.white:Colors.black),)),
+                }, child: Text('Female',style: GoogleFonts.poppins(fontSize: 18,color: female? Colors.white:Colors.black),)),
               ),
-                SizedBox(height: 4,),
-                Text(
-                  "Another Gender",
-                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800),
+                SizedBox(height: 8),
+                SizedBox(
+                  height: 56,
+                  width: double.infinity,
+                  child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                          backgroundColor: !others? Colors.transparent : Colors.black
+                      ),
+                      onPressed: () {
+                        othersTogle();
+                      }, child: Text('Others',style: GoogleFonts.poppins(fontSize: 18,color: others? Colors.white:Colors.black),)),
                 ),
             ],),
           )

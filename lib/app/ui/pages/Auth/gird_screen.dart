@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:love_tale/app/ui/pages/Auth/swipe_screen.dart';
 import 'package:love_tale/app/ui/pages/personal_details/custom_chart_row.dart';
 
+import '../../../controllers/card_Controller.dart';
 import '../../../controllers/discovery_controller.dart';
 import '../../../utils/const/app_color.dart';
 import '../../../utils/const/app_images.dart';
+import '../../select_hotel.dart';
+import '../card_Screen.dart';
 
 class DiscoverGridView extends StatefulWidget {
   @override
@@ -14,6 +18,7 @@ class DiscoverGridView extends StatefulWidget {
 
 class _DiscoverGridViewState extends State<DiscoverGridView> {
   final DiscoverGridController controller = Get.put(DiscoverGridController());
+  final CardDetailController controller2 = Get.put(CardDetailController());
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +69,7 @@ class _DiscoverGridViewState extends State<DiscoverGridView> {
                     onTap: () {
                       setState(() {
                         controller.setSelectedIndex(index);
+                        Get.to(SwipeScreen());
                       });
 
                     },

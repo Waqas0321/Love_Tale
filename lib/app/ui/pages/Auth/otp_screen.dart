@@ -9,24 +9,6 @@ import '../../../controllers/otp_controller.dart';
 import '../../../utils/const/app_color.dart';
 import '../../../utils/const/app_strings.dart';
 import '../../../utils/widgets/app_button.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: OtpScreen(),
-    );
-  }
-}
-
 class OtpScreen extends StatelessWidget {
   final OtpController _controller = Get.put(OtpController());
   final LoveTaleSizes _sizes = LoveTaleSizes();

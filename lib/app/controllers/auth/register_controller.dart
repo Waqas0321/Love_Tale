@@ -1,17 +1,34 @@
-// lib/controllers/login_controller.dart
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:love_tale/app/ui/pages/Auth/login.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:image_picker/image_picker.dart';
 
+import '../../ui/pages/Auth/login.dart';
 import '../../utils/pref_util.dart';
 
-class LoginController extends GetxController {
+class RegisterControler extends GetxController{
   // Add any necessary variables and methods here
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  Rx<File?> image = Rx(null);
+
+  Future<void> pickImage() async {
+    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+        image.value = File(pickedFile.path);
+    }
+  }
+  File? _image2;
+
+  Future<void> pickImage2() async {
+    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+        _image2 = File(pickedFile.path);
+    }
+  }
 
 
   void onContinueWith() {
@@ -23,7 +40,7 @@ class LoginController extends GetxController {
     'email',
   ];
   GoogleSignIn _googleSignIn = GoogleSignIn(
-    scopes: scopes
+      scopes: scopes
   );
 
   void onContinueWithGoogle() {
@@ -34,14 +51,14 @@ class LoginController extends GetxController {
   Future<User?> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleSignInAccount =
-          await _googleSignIn.signIn();
+      await _googleSignIn.signIn();
       if (googleSignInAccount == null) {
         // User canceled the sign-in
         return null;
       }
 
       final GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount.authentication;
+      await googleSignInAccount.authentication;
 
       // Use the correct idToken
       final AuthCredential authCredential = GoogleAuthProvider.credential(
@@ -50,7 +67,7 @@ class LoginController extends GetxController {
       );
 
       UserCredential userCredential =
-          await _auth.signInWithCredential(authCredential);
+      await _auth.signInWithCredential(authCredential);
       User? user = userCredential.user;
       print('UserId here at login ${user!.uid}');
       PrefUtil.setString("username", user!.displayName!);

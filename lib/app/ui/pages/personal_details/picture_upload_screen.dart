@@ -1,8 +1,14 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:get/get.dart';
+import 'package:love_tale/app/ui/pages/Auth/location_Screen.dart';
 import 'package:love_tale/app/ui/pages/personal_details/insterest_screen.dart';
+import 'package:love_tale/app/utils/widgets/app_button.dart';
+
+import '../../../../Constants/love_tale_Sizes.dart';
+import 'location_screen.dart';
 class PictureUploadScreen extends StatefulWidget {
   const PictureUploadScreen({super.key});
 
@@ -44,11 +50,11 @@ class _PictureUploadScreenState extends State<PictureUploadScreen> {
                   SizedBox(height: 30),
                   Text(
                     "Choose your Photos",
-                    style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800),
+                    style: GoogleFonts.poppins(fontSize: 21, fontWeight: FontWeight.w800),
                   ),
                   Text(
                     "Upload at least 1 photo to get started",
-                    style: TextStyle(fontSize: 18),
+                    style: GoogleFonts.poppins(fontSize: 16),
                   ),
                   SizedBox(height: 18),
                   Row(
@@ -73,35 +79,46 @@ class _PictureUploadScreenState extends State<PictureUploadScreen> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              if (_image == null)
-                                Icon(
-                                  Icons.camera_alt,
-                                  size: 42,
-                                  color: Colors.black54,
-                                ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  SizedBox(
-                                    height: 30,
-                                    width: 30,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        pickImage();
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        shape: CircleBorder(),
-                                        padding: EdgeInsets.all(0),
-                                        backgroundColor: Colors.white,
+                              SizedBox(
+                                height: 110,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    if (_image == null)
+                                      Icon(
+                                        Icons.camera_alt,
+                                        size: 42,
+                                        color: Colors.black54,
                                       ),
-                                      child: Icon(
-                                        Icons.add,
-                                        color: Colors.black,
-                                        size: 20,
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    SizedBox(
+                                      height: 30,
+                                      width: 30,
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          pickImage();
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          shape: CircleBorder(),
+                                          padding: EdgeInsets.all(0),
+                                          backgroundColor: Colors.white,
+                                        ),
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.black,
+                                          size: 20,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               )
                             ],
                           ),
@@ -127,35 +144,46 @@ class _PictureUploadScreenState extends State<PictureUploadScreen> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              if (_image2 == null)
-                                Icon(
-                                  Icons.camera_alt,
-                                  size: 42,
-                                  color: Colors.black54,
-                                ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  SizedBox(
-                                    height: 30,
-                                    width: 30,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        pickImage2();
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        shape: CircleBorder(),
-                                        padding: EdgeInsets.all(0),
-                                        backgroundColor: Colors.white,
+                              SizedBox(
+                                height: 110,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    if (_image2 == null)
+                                      Icon(
+                                        Icons.camera_alt,
+                                        size: 42,
+                                        color: Colors.black54,
                                       ),
-                                      child: Icon(
-                                        Icons.add,
-                                        color: Colors.black,
-                                        size: 20,
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    SizedBox(
+                                      height: 30,
+                                      width: 30,
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          pickImage2();
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          shape: CircleBorder(),
+                                          padding: EdgeInsets.all(0),
+                                          backgroundColor: Colors.white,
+                                        ),
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.black,
+                                          size: 20,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               )
                             ],
                           ),
@@ -176,15 +204,17 @@ class _PictureUploadScreenState extends State<PictureUploadScreen> {
                 child: SizedBox(
                     height: 55,
                     width: double.infinity,
-                    child:
-                    ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.black,
-                            foregroundColor: Colors.white
-                        ),
-                        onPressed: () {
-                          Get.to(InterestScreen());
-                        }, child: Text('Upload Photos',style: TextStyle(fontWeight: FontWeight.w600),))),
+                    child: CustomButton(
+                      text: "Upload Photos",
+                      borderRadius: 32,
+                      onPressed: () {
+                        Get.to(InterestScreen());
+
+                      },
+                      height: LoveTaleSizes.buttonHeight,
+                      width: 327,
+                    ),
+                   ),
               ))]
 
         ),
@@ -192,3 +222,11 @@ class _PictureUploadScreenState extends State<PictureUploadScreen> {
     );
   }
 }
+// ElevatedButton(
+// style: ElevatedButton.styleFrom(
+// backgroundColor: Colors.black,
+// foregroundColor: Colors.white
+// ),
+// onPressed: () {
+// Get.to(InterestScreen());
+// }, child: Text('Upload Photos',style: GoogleFonts.poppins(fontWeight: FontWeight.w600),))

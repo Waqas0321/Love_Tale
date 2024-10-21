@@ -53,7 +53,7 @@ class BottomScreen extends StatelessWidget {
                 children: [
                   DiscoverScreen(),  // Show CardDetailView first
                   DiscoverGridView(),  // Show DiscoverGridView second
-                  HotelScreen(),
+                  DiscoverGridView(),
                   ChatScreen(),
                   EditProfile(),
                 ],

@@ -11,7 +11,7 @@ class CustomTextField extends StatelessWidget {
     return TextField(
       decoration: InputDecoration(
         border: OutlineInputBorder( // Sets the default border style
-          borderRadius: BorderRadius.circular(12.0), // Rounded corners
+          borderRadius: BorderRadius.circular(40.0), // Rounded corners
           borderSide: BorderSide(
             color: Colors.black, // Border color
             width: 2.0, // Border width

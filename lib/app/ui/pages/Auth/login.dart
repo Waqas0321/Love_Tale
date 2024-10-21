@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:love_tale/app/bindings/bottom_screen.dart';
+import 'package:love_tale/app/ui/pages/Auth/otp_screen.dart';
 import 'package:love_tale/app/ui/pages/Auth/phone_number.dart';
+import 'package:love_tale/app/ui/pages/Auth/register_screen.dart';
+import 'package:love_tale/app/utils/const/app_color.dart';
 import '../../../../Constants/love_tale_Sizes.dart';
 import '../../../controllers/auth/login.dart';
 import '../../../utils/const/app_images.dart';
@@ -104,63 +107,14 @@ class LoginScreen extends GetView<LoginController> {
                           children: [
                             Expanded(
                               child: CustomButton(
-                                  text: "Continue",
+                                  text: "Log In",
                                   fontSize: 12,
                                   borderRadius: 30,
                                   onPressed: () {
-                                    Get.to(PhoneScreen());
+                                    Get.to(OtpScreen());
                                   },
                                   height: LoveTaleSizes.buttonHeight,
                                   width: 110),
-                            ),
-                            SizedBox(
-                              width: LoveTaleSizes.spaceBTWItems,
-                            ),
-                            Expanded(
-                              child: ElevatedButton(
-                                onPressed: () async {
-                                  controller.onContinueWithGoogle();
-                                  final user = await controller.signInWithGoogle();
-                                  if(user != null){
-                                    Get.snackbar('Congratulations ${user.displayName}', 'Welcome to the Love Tale');
-                                    Get.to(BottomScreen());
-                                  }else{
-                                    Get.snackbar('Error', 'Not SignIn on Love Tale');
-                                  }
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.white,
-                                  // padding:
-                                  //     EdgeInsets.symmetric(vertical: 14, horizontal: 13),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18),
-                                  ),
-                                ),
-                                child: SizedBox(
-                                  height: LoveTaleSizes.buttonHeight,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "OR",
-                                        style: CustomTextStyles.bodyText1,
-                                      ),
-                                      Image.asset(
-                                        AppImages.image,
-                                        height: 20,
-                                        width: 20,
-                                      ),
-                                      Expanded(
-                                        child: Text(
-                                          'Continue with Google',
-                                          maxLines: 2,
-                                          style: CustomTextStyles.bodyText1,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
                             ),
                           ],
                         ),
@@ -179,7 +133,6 @@ class LoginScreen extends GetView<LoginController> {
                                     fontSize: 11,
                                     borderRadius: 30,
                                     onPressed: () {
-                                      Get.to(PhoneScreen());
                                     },
                                     height: LoveTaleSizes.buttonHeight,
                                     width: MediaQuery.of(context).size.width / 2.3),
@@ -193,7 +146,6 @@ class LoginScreen extends GetView<LoginController> {
                                     showImage: true,
                                     borderRadius: 30,
                                     onPressed: () {
-                                      Get.to(PhoneScreen());
                                     },
                                     height: LoveTaleSizes.buttonHeight,
                                     width: buttonWidth),
@@ -201,10 +153,89 @@ class LoginScreen extends GetView<LoginController> {
                             ],
                           ),
                         ),
+                        SizedBox(
+                          height: LoveTaleSizes.spaceBTWItems,
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+
+                          Expanded(
+                            child: SizedBox(
+                              width: Get.width * 0.5,
+                              child: CustomButton(
+                                  text: "Continue",
+                                  fontSize: 12,
+                                  showIcon: true,
+                                  borderRadius: 30,
+                                  onPressed: () {
+                                    Get.to(PhoneScreen());
+                                  },
+                                  height: LoveTaleSizes.buttonHeight,
+                                  width: 110),
+                            ),
+                          ),
+                            SizedBox(width: LoveTaleSizes.spaceBTWItems),
+                            Expanded(
+                              child: SizedBox(
+                                width: Get.width * 0.5,
+                                child: CustomButton(
+                                    text: "Continue",
+                                    fontSize: 12,
+                                    gradientColor: false,
+                                    showImage: true,
+                                    textColor: Colors.black,
+                                    imagePath: 'assets/images/img_1.png',
+                                    borderRadius: 30,
+                                    onPressed: () async {
+                                      controller.onContinueWithGoogle();
+                                      final user = await controller.signInWithGoogle();
+                                      if(user != null){
+                                        Get.snackbar('Congratulations ${user.displayName}', 'Welcome to the Love Tale');
+                                        Get.to(BottomScreen());
+                                      }else{
+                                        Get.snackbar('Error', 'Not SignIn on Love Tale');
+                                      }
+                                    },
+                                    height: LoveTaleSizes.buttonHeight,
+                                    width: 110),
+                              ),
+                            )
+                        ],)
                       ],
                     ),
                   ),
                   // Row with buttons
+                  SizedBox(height: LoveTaleSizes.spaceBTWSections),
+                  Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Don't have any Account",
+                            style: CustomTextStyles.bodyText2?.copyWith(
+                              color: AppColors.blue,
+                              fontWeight: FontWeight.w500,
+                              // Add underline decoration here
+                            ),
+                          ),
+                          SizedBox(width: 6,),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(RegisterScreen());
+                            },
+                            child: Text(
+                              'Register Now',
+                              style: CustomTextStyles.bodyText2?.copyWith(
+                                color: AppColors.pink,
+                                fontWeight: FontWeight.w500,
+                                decoration: TextDecoration.underline, // Add underline decoration here
+                              ),
+                            ),
+                          ),
+                        ],
+                      )),
                   SizedBox(height: LoveTaleSizes.spaceBTWSections),
                   Center(
                       child: Text(

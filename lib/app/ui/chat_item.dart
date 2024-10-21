@@ -1,24 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:love_tale/app/ui/pages/Auth/profile_screen.dart';
 
-class ChatItem extends StatelessWidget {
+class ChatItem extends StatefulWidget {
   final String username;
   final String message;
   final String time;
+  final String userId;
   final String image;
   final bool isUnread;
   final bool isOnline;
 
   ChatItem({
     required this.username,
-    required this.message,
+     this.message= 'Message here',
     required this.time,
     required this.image,
     this.isUnread = false,
-    this.isOnline = false,
+    this.isOnline = false, required this.userId,
   });
 
+  @override
+  State<ChatItem> createState() => _ChatItemState();
+}
+
+class _ChatItemState extends State<ChatItem> {
+  String _formatDate(String date) {
+
+    final messageDate = DateTime.parse(date);
+    final now = DateTime.now();
+    final difference = now.difference(messageDate).inDays;
+    if (difference == 0) return 'Today';
+    if (difference == 1) return 'Yesterday';
+
+    if(difference >= 1 && difference <= 6 ){
+      return DateFormat('EEEE').format(messageDate);
+    }
+    return DateFormat('dd-MM-yyyy \n hh,mm').format(messageDate);
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,9 +49,9 @@ class ChatItem extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 20,
-              backgroundImage: NetworkImage(image),
+              backgroundImage: NetworkImage(widget.image),
             ),
-            if (isOnline)
+            if (widget.isOnline)
               Positioned(
                 bottom: 0,
                 right: 0,
@@ -48,7 +68,7 @@ class ChatItem extends StatelessWidget {
           ],
         ),
         title: Text(
-          username,
+          widget.username,
           style: GoogleFonts.poppins(
             fontSize: 14,
             fontWeight: FontWeight.w600,
@@ -56,17 +76,17 @@ class ChatItem extends StatelessWidget {
           ),
         ),
         subtitle: Text(
-          message,
+          widget.message,
           style: GoogleFonts.poppins(
             fontSize: 12,
-            fontWeight: isUnread ? FontWeight.w700 : FontWeight.w400,
+            fontWeight: widget.isUnread ? FontWeight.w700 : FontWeight.w400,
             color: Colors.black38,
           ),
         ),
         trailing: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (isUnread)
+            if (widget.isUnread)
               Container(
                 margin: EdgeInsets.only(bottom: 3),
                 width: 8,
@@ -77,7 +97,7 @@ class ChatItem extends StatelessWidget {
                 ),
               ),
             Text(
-              time,
+              _formatDate(widget.time),
               style: GoogleFonts.poppins(
                 fontSize: 11,
                 color: Colors.black54,
@@ -90,11 +110,12 @@ class ChatItem extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) => CombinedScreen (
-                username: username,
+                selectedId: widget.userId,
+                username: widget.username,
                 age: "23",
                 status: "You're friends on Dater",
                 location: "Lives in California, USA",
-                image: image,
+                image: widget.image,
               ),
             ),
           );

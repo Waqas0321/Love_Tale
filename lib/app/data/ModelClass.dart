@@ -4,8 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class UserModel {
   final String id;
   final String email;
-  final String? displayName; // Nullable
-  final String? photoURL;     // Nullable
+  final String? displayName; // Nullable, for optional user name
+  final String? photoURL;     // Nullable, for optional photo URL
   final DateTime createdAt;
 
   UserModel({
@@ -20,9 +20,9 @@ class UserModel {
   factory UserModel.fromFirestore(Map<String, dynamic> data, String id) {
     return UserModel(
       id: id,
-      email: data['email'],
-      displayName: data['displayName'],
-      photoURL: data['photoURL'],
+      email: data['email'] ?? '', // Default to empty string if not available
+      displayName: data['displayName'], // Nullable
+      photoURL: data['photoURL'],       // Nullable
       createdAt: (data['createdAt'] as Timestamp).toDate(), // Convert Firestore Timestamp to DateTime
     );
   }

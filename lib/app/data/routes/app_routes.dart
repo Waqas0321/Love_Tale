@@ -21,6 +21,7 @@ import '../../ui/pages/edit_profile.dart';
 import '../../ui/pages/likes_screen.dart';
 import '../../ui/pages/policies.dart';
 import '../../ui/pages/splash.dart';
+import '../../ui/pages/splash1.dart';
 import '../../ui/pages/username_screen.dart';
 import '../../ui/select_hotel.dart';
 import '../../ui/settings_Screen.dart';
@@ -29,7 +30,7 @@ class AppRoutes {
   static const String initalroute = "/";
   static const String initalrouteTwo = "/polices";
   static getApproutes() => [
-        GetPage(name: "/", page: () => SplashScreen()),
+        GetPage(name: "/", page: () => Splash1Screen()),
         GetPage(name: "/polices", page: () => Policies()),
         GetPage(name: "/login_screen", page: () => LoginScreen()),
         GetPage(name: "/phone_number", page: () => PhoneScreen()),

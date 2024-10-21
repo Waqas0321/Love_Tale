@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:love_tale/app/ui/pages/personal_details/gender_screen.dart';
+import '../../../utils/const/app_color.dart';
 import '../../../utils/widgets/custom_textfield.dart'; // Make sure to import your DateController
 
 class FirstNameScreen extends StatefulWidget {
@@ -19,9 +21,17 @@ class _FirstNameScreenState extends State<FirstNameScreen> {
         onPressed: () {
           Get.to(GenderScreen());
         },
-        child: Icon(Icons.navigate_next_sharp,color: Colors.white,size: 32,), // You can use any icon you prefer
+        child: Container(
+          height: 150,
+          width: 150,
+          decoration: BoxDecoration(
+            gradient: AppColors.customGradient,
+            shape: BoxShape.circle
+
+          ),
+            child: Icon(Icons.navigate_next_sharp,color: Colors.white,size: 32,)), // You can use any icon you prefer
         shape: CircleBorder(), // Ensures the button is circular
-        backgroundColor: Colors.black, // Set the background color
+        backgroundColor: Colors.transparent, // Set the background color
         elevation: 6, // Add elevation for a shadow effect
       ),
       body: SafeArea(
@@ -32,10 +42,10 @@ class _FirstNameScreenState extends State<FirstNameScreen> {
             Padding(
               padding: const EdgeInsets.only(left: 30, top: 30),
               child: SizedBox(
-                width: 210,
+                width: 250,
                 child: Text(
                   "Oh hey! let's start with an intro",
-                  style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),
+                  style: GoogleFonts.poppins(fontSize: 26, fontWeight: FontWeight.w800),
                 ),
               ),
             ),
@@ -47,7 +57,7 @@ class _FirstNameScreenState extends State<FirstNameScreen> {
                 children: [
                   Text(
                     'Your first name',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                    style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                   SizedBox(height: 3),
                   CustomTextField(),
@@ -62,18 +72,18 @@ class _FirstNameScreenState extends State<FirstNameScreen> {
                 children: [
                   Text(
                     'Your birthday',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                    style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                   SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Month',
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400,color: Colors.black54)),
+                          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400,color: Colors.black54)),
                       Text('Day',
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400,color: Colors.black54)),
+                          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400,color: Colors.black54)),
                       Text('Year',
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400,color: Colors.black54)),
+                          style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400,color: Colors.black54)),
                       SizedBox.shrink()
                     ],
                   ),
@@ -101,13 +111,13 @@ class _FirstNameScreenState extends State<FirstNameScreen> {
                             height: 55,
                             decoration: BoxDecoration(
                               border: Border.all(color: Colors.black, width: 1.0), // Border color and width
-                              borderRadius: BorderRadius.circular(16.0), // Rounded corners
+                              borderRadius: BorderRadius.circular(50.0), // Rounded corners
                             ),
                             // Padding inside the container
                             child: Center(
                               child: Text(
                                  dateController.month.value, // Display hint or the value
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                   color: Colors.black,
                                   fontSize: 18// Change color based on value
                                 ),
@@ -121,13 +131,13 @@ class _FirstNameScreenState extends State<FirstNameScreen> {
                             height: 55,
                             decoration: BoxDecoration(
                               border: Border.all(color: Colors.black, width: 1.0), // Border color and width
-                              borderRadius: BorderRadius.circular(16.0), // Rounded corners
+                              borderRadius: BorderRadius.circular(50.0), // Rounded corners
                             ),
                             // Padding inside the container
                             child: Center(
                               child: Text(
                                 dateController.day.value, // Display hint or the value
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     color: Colors.black,
                                     fontSize: 18// Change color based on value
                                 ),
@@ -141,13 +151,13 @@ class _FirstNameScreenState extends State<FirstNameScreen> {
                             height: 55,
                             decoration: BoxDecoration(
                               border: Border.all(color: Colors.black, width: 1.0), // Border color and width
-                              borderRadius: BorderRadius.circular(16.0), // Rounded corners
+                              borderRadius: BorderRadius.circular(50.0), // Rounded corners
                             ),
                             // Padding inside the container
                             child: Center(
                               child: Text(
                                 dateController.year.value, // Display hint or the value
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     color: Colors.black,
                                     fontSize: 18// Change color based on value
                                 ),
@@ -161,7 +171,7 @@ class _FirstNameScreenState extends State<FirstNameScreen> {
                   SizedBox(height: 4,),
                   Text(
                     "It's never too early to count down",
-                    style: TextStyle(fontSize: 16,color: Colors.black54),
+                    style: GoogleFonts.poppins(fontSize: 16,color: Colors.black54),
                   ),
                 ],
               ),

@@ -28,7 +28,7 @@ class Splash2 extends StatelessWidget {
                         clipBehavior: Clip.antiAlias,
                         height: 180,
                         width: 180,
-                        padding: const EdgeInsets.all(12),
+                        padding: const EdgeInsets.all(4),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.purple,
@@ -39,7 +39,7 @@ class Splash2 extends StatelessWidget {
                             shape: BoxShape.circle,
                           ),
                           child: CircleAvatar(
-                            radius: 30,
+                            radius: 40,
                             child:
                                 VideoPlayer(controller.videoPlayerController),
                           ),

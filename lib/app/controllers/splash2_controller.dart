@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:love_tale/app/bindings/bottom_screen.dart';
+import 'package:love_tale/app/ui/pages/Auth/login.dart';
 import 'package:love_tale/app/ui/pages/policies.dart';
 import 'package:video_player/video_player.dart';
 
@@ -15,7 +16,7 @@ class Splash2Controller extends GetxController {
     Timer(const Duration(seconds: 12), () {
       User? user = FirebaseAuth.instance.currentUser;
       if(user == null){
-        Get.off(() =>Policies());
+        Get.off(() =>LoginScreen());
       }
       else{
         Get.off(() =>BottomScreen());
@@ -28,7 +29,7 @@ class Splash2Controller extends GetxController {
     // Update the container position after 5 seconds
     Timer(const Duration(seconds: 4), () {
       containerPositionTop.value = 280; // New position
-      containerPositionLeft.value = 150; // New position
+      containerPositionLeft.value = 160; // New position
     });
     Timer(const Duration(seconds: 8), () {
       containerPositionTop.value = 450; // New position

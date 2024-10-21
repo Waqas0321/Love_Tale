@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:get/get.dart';
 import 'package:nova_places_autocomplete/nova_places_autocomplete.dart';
 
 import '../../../bindings/bottom_screen.dart';
+import '../../../utils/const/app_color.dart';
 
 class LocationMapScreen extends StatefulWidget {
   const LocationMapScreen({super.key});
@@ -71,7 +73,15 @@ class _LocationMapScreenState extends State<LocationMapScreen> {
         onPressed: () {
           Get.to(BottomScreen());
         },
-        child: Icon(Icons.navigate_next_sharp,color: Colors.white,size: 32,), // You can use any icon you prefer
+        child: Container(
+            height: 150,
+            width: 150,
+            decoration: BoxDecoration(
+                gradient: AppColors.customGradient,
+                shape: BoxShape.circle
+
+            ),
+            child: Icon(Icons.navigate_next_sharp,color: Colors.white,size: 32,)), // You can use any icon you prefer
         shape: CircleBorder(), // Ensures the button is circular
         backgroundColor: Colors.black, // Set the background color
         elevation: 6, // Add elevation for a shadow effect
@@ -84,7 +94,7 @@ class _LocationMapScreenState extends State<LocationMapScreen> {
               SizedBox(height: 30),
               Text(
                 "Where do you live?",
-                style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800),
+                style: GoogleFonts.poppins(fontSize: 21, fontWeight: FontWeight.w800),
               ),
               SizedBox(height: 18),
               NovaPlacesAutocomplete(
