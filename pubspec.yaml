@@ -37,7 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_svg: ^2.0.9
   get: ^4.6.6
-  intl:
+  intl: ^0.19.0
   move_detector: ^0.0.2
   blur:
   nova_places_autocomplete: ^2.0.0

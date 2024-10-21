@@ -17,6 +17,7 @@ class _FirstNameScreenState extends State<FirstNameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.to(GenderScreen());
@@ -56,7 +57,7 @@ class _FirstNameScreenState extends State<FirstNameScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Your first name',
+                    '     Your first name',
                     style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                   SizedBox(height: 3),

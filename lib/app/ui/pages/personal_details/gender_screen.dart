@@ -49,6 +49,7 @@ class _GenderScreenState extends State<GenderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.to(PictureUploadScreen());

@@ -5,6 +5,7 @@ import 'package:love_tale/app/ui/pages/Auth/location_Screen.dart';
 import 'package:love_tale/app/ui/pages/personal_details/location_screen.dart';
 
 import '../../../../Constants/love_tale_Sizes.dart';
+import '../../../utils/const/app_color.dart';
 import '../../../utils/widgets/app_button.dart';
 class InterestScreen extends StatefulWidget {
   const InterestScreen({super.key});
@@ -25,6 +26,7 @@ class _InterestScreenState extends State<InterestScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SafeArea(
         child: Stack(
           children: [

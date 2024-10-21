@@ -68,7 +68,9 @@ class _LocationMapScreenState extends State<LocationMapScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+      backgroundColor: AppColors.white,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.to(BottomScreen());

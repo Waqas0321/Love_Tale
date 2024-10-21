@@ -97,6 +97,7 @@ class Settings extends StatelessWidget {
                                   child: Container(
                                     width: contentWidth / 3,
                                     height: 56,
+                                    padding: EdgeInsets.only(right: 8),
                                     decoration: BoxDecoration(
                                       gradient: AppColors.customGradient,
                                       borderRadius: BorderRadius.circular(15),
@@ -111,7 +112,7 @@ class Settings extends StatelessWidget {
                                           flex: 2,
                                           child: Text('Get Boosts',
                                               style:
-                                                  TextStyle(color: Colors.white)),
+                                                  GoogleFonts.poppins(color: Colors.white)),
                                         ),
                                       ],
                                     ),
@@ -139,7 +140,7 @@ class Settings extends StatelessWidget {
                                           flex: 3,
                                           child: Text('Get Super Likes',
                                               style:
-                                                  TextStyle(color: Colors.white)),
+                                                  GoogleFonts.poppins(color: Colors.white)),
                                         ),
                                       ],
                                     ),
@@ -608,7 +609,7 @@ class Settings extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "Share Dater",
+                                  "Share LoveTale",
                                   style: GoogleFonts.poppins(
                                     fontSize: 17,
                                     fontWeight: FontWeight.w600,

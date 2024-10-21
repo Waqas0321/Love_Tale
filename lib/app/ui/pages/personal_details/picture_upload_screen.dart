@@ -8,6 +8,7 @@ import 'package:love_tale/app/ui/pages/personal_details/insterest_screen.dart';
 import 'package:love_tale/app/utils/widgets/app_button.dart';
 
 import '../../../../Constants/love_tale_Sizes.dart';
+import '../../../utils/const/app_color.dart';
 import 'location_screen.dart';
 class PictureUploadScreen extends StatefulWidget {
   const PictureUploadScreen({super.key});
@@ -41,6 +42,7 @@ class _PictureUploadScreenState extends State<PictureUploadScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SafeArea(
         child: Stack(
           children:[

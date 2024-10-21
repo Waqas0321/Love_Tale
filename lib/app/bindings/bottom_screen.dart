@@ -89,7 +89,7 @@ class BottomScreen extends StatelessWidget {
                   elevation: 0, // Remove elevation to avoid shadow conflict
                   items: [
                     BottomNavigationBarItem(
-                      icon: Icon(Icons.location_on_outlined),
+                      icon: Icon(Icons.home),
                       label: '',
                     ),
                     BottomNavigationBarItem(
