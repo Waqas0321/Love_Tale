@@ -10,6 +10,7 @@ import 'package:intl/intl.dart';
 import 'package:love_tale/app/Models/user_chat_model.dart';
 import 'package:love_tale/app/ui/pages/edit_profile.dart';
 import 'package:love_tale/app/ui/settings_Screen.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 import '../../../Models/chat_model.dart';
 import '../../../utils/const/app_color.dart';
 import '../../../utils/firebase_util.dart';
@@ -86,7 +87,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
   //     _controller.clear();
   //   });
   // }
-
+final double percentage = 0.8;
   @override
   void initState() {
     super.initState();
@@ -113,10 +114,15 @@ class _CombinedScreenState extends State<CombinedScreen> {
             ),
             title: Row(
               children: [
-                CircleAvatar(
-                  radius: 19,
-                  backgroundImage: NetworkImage(
-                      widget.image), // Replace with actual image URL
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfile(),));
+                  },
+                  child: CircleAvatar(
+                    radius: 19,
+                    backgroundImage: NetworkImage(
+                        widget.image), // Replace with actual image URL
+                  ),
                 ),
                 SizedBox(width: 10),
                 SizedBox(
@@ -184,6 +190,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                       location: widget.location,
                       image: widget.image,
                     );
+
                   }
 
                   final chat = UserChatModel.fromJson(snapshot.data!.docs[0].data());
@@ -201,7 +208,33 @@ class _CombinedScreenState extends State<CombinedScreen> {
                   }
                 },
               ),
-              SimplePercentageRow(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18),
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 0,vertical: 2),
+            decoration: BoxDecoration(
+              border: Border.all(),
+              borderRadius: BorderRadius.circular(32)
+            ),
+            child: LinearPercentIndicator(
+              lineHeight: 14.0,
+              percent: percentage, // Adjust this value dynamically based on the percentage
+              backgroundColor: Colors.white,
+              progressColor: Colors.pink,
+              barRadius: Radius.circular(32), // Rounded edges for the progress bar
+              center: Text(
+                '${percentage * 100}%', // Display percentage inside the bar
+                style: GoogleFonts.poppins(
+                  fontSize: 12.0,
+                  color:percentage <= 0.55? Colors.black: Colors.white,
+                ),
+              ),
+              linearStrokeCap: LinearStrokeCap.roundAll,
+              animation: true,
+              animationDuration: 1000,
+            ),
+          ),
+        ),
           SizedBox(height: 10,),
           Expanded(
                 child: StreamBuilder(

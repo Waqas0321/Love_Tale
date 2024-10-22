@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:love_tale/app/ui/pages/Auth/swipe_screen.dart';
 import 'package:love_tale/app/ui/pages/personal_details/custom_chart_row.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../controllers/card_Controller.dart';
 import '../../../controllers/discovery_controller.dart';
@@ -19,6 +20,7 @@ class DiscoverGridView extends StatefulWidget {
 class _DiscoverGridViewState extends State<DiscoverGridView> {
   final DiscoverGridController controller = Get.put(DiscoverGridController());
   final CardDetailController controller2 = Get.put(CardDetailController());
+
 
   @override
   Widget build(BuildContext context) {
@@ -129,11 +131,38 @@ class _DiscoverGridViewState extends State<DiscoverGridView> {
                                     ],
                                   ),
                                   SizedBox(height: 2),
-                                  SimplePercentageRow(
-                                    width: 100,
-                                    height: 8,
-                                    indicatorSize: 40,
-                                  ),
+                                  Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 18),
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(horizontal: 0,vertical: 2),
+                                        decoration: BoxDecoration(
+                                            border: Border.all(),
+                                            borderRadius: BorderRadius.circular(32)
+                                        ),
+                                        child: Obx(
+                                          () =>  LinearPercentIndicator(
+                                            lineHeight: 14.0,
+                                            percent: controller.percentage.value, // Adjust this value dynamically based on the percentage
+                                            backgroundColor: Colors.white,
+                                            progressColor: Colors.pink,
+                                            barRadius: Radius.circular(32), // Rounded edges for the progress bar
+                                            center: Obx(
+                                             () =>  Text(
+                                                '${controller.percentage.value * 100}%', // Display percentage inside the bar
+                                                style: GoogleFonts.poppins(
+                                                  fontSize: 9.0,
+                                                  color:controller.percentage.value <= 0.55? Colors.black: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                            linearStrokeCap: LinearStrokeCap.roundAll,
+                                            animation: true,
+                                            animationDuration: 1000,
+                                          ),
+                                        ),
+
+                                      ),
+                                    ),
                                   SizedBox(height: 1.0),
                                 ],
                               ),

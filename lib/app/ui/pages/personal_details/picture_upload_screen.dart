@@ -38,197 +38,370 @@ class _PictureUploadScreenState extends State<PictureUploadScreen> {
       });
     }
   }
+  final LoveTaleSizes _sizes = LoveTaleSizes();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      body: SafeArea(
-        child: Stack(
-          children:[
-            Center(
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        double contentWidth = _sizes.getscreencontentWidth();
+        bool isMobile = _sizes.isMobileFun();
+        bool isDesktop = _sizes.isDesktopFun();
+        return Scaffold(
+          backgroundColor: AppColors.white,
+          body: isMobile?SafeArea(
+            child: Stack(
+                children:[
+                  Center(
+                    child: Column(
+                      children: [
+                        SizedBox(height: 30),
+                        Text(
+                          "Choose your Photos",
+                          style: GoogleFonts.poppins(fontSize: 21, fontWeight: FontWeight.w800),
+                        ),
+                        Text(
+                          "Upload at least 1 photo to get started",
+                          style: GoogleFonts.poppins(fontSize: 16),
+                        ),
+                        SizedBox(height: 18),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(12),
+                              clipBehavior: Clip.antiAlias,
+                              height: 230,
+                              width: MediaQuery.of(context).size.width * 0.4,
+                              decoration: BoxDecoration(
+                                color: Color(0xffd1dcdc),
+                                image: _image != null
+                                    ? DecorationImage(
+                                  image: FileImage(_image!),
+                                  fit: BoxFit.cover,
+                                )
+                                    : null,
+                                borderRadius: BorderRadius.circular(26),
+                              ),
+                              child: Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      height: 110,
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          if (_image == null)
+                                            Icon(
+                                              Icons.camera_alt,
+                                              size: 42,
+                                              color: Colors.black54,
+                                            ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          SizedBox(
+                                            height: 30,
+                                            width: 30,
+                                            child: ElevatedButton(
+                                              onPressed: () {
+                                                pickImage();
+                                              },
+                                              style: ElevatedButton.styleFrom(
+                                                shape: CircleBorder(),
+                                                padding: EdgeInsets.all(0),
+                                                backgroundColor: Colors.white,
+                                              ),
+                                              child: Icon(
+                                                Icons.add,
+                                                color: Colors.black,
+                                                size: 20,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 12),
+                            Container(
+                              padding: EdgeInsets.all(12),
+                              clipBehavior: Clip.antiAlias,
+                              height: 230,
+                              width: MediaQuery.of(context).size.width * 0.4,
+                              decoration: BoxDecoration(
+                                color: Color(0xffd1dcdc),
+                                image: _image2 != null
+                                    ? DecorationImage(
+                                  image: FileImage(_image2!),
+                                  fit: BoxFit.cover,
+                                )
+                                    : null,
+                                borderRadius: BorderRadius.circular(26),
+                              ),
+                              child: Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      height: 110,
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          if (_image2 == null)
+                                            Icon(
+                                              Icons.camera_alt,
+                                              size: 42,
+                                              color: Colors.black54,
+                                            ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          SizedBox(
+                                            height: 30,
+                                            width: 30,
+                                            child: ElevatedButton(
+                                              onPressed: () {
+                                                pickImage2();
+                                              },
+                                              style: ElevatedButton.styleFrom(
+                                                shape: CircleBorder(),
+                                                padding: EdgeInsets.all(0),
+                                                backgroundColor: Colors.white,
+                                              ),
+                                              child: Icon(
+                                                Icons.add,
+                                                color: Colors.black,
+                                                size: 20,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+
+                  Positioned(
+                      bottom: 20,
+                      left: 0,
+                      right: 0,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: SizedBox(
+                          height: 55,
+                          width: double.infinity,
+                          child: CustomButton(
+                            text: "Upload Photos",
+                            borderRadius: 32,
+                            onPressed: () {
+                              Get.to(InterestScreen());
+
+                            },
+                            height: LoveTaleSizes.buttonHeight,
+                            width: 327,
+                          ),
+                        ),
+                      ))]
+
+            ),
+          ):SafeArea(
+            child: Center(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(height: 30),
-                  Text(
-                    "Choose your Photos",
-                    style: GoogleFonts.poppins(fontSize: 21, fontWeight: FontWeight.w800),
-                  ),
-                  Text(
-                    "Upload at least 1 photo to get started",
-                    style: GoogleFonts.poppins(fontSize: 16),
-                  ),
-                  SizedBox(height: 18),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  Column(
                     children: [
-                      Container(
-                        padding: EdgeInsets.all(12),
-                        clipBehavior: Clip.antiAlias,
-                        height: 230,
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        decoration: BoxDecoration(
-                          color: Color(0xffd1dcdc),
-                          image: _image != null
-                              ? DecorationImage(
-                            image: FileImage(_image!),
-                            fit: BoxFit.cover,
-                          )
-                              : null,
-                          borderRadius: BorderRadius.circular(26),
-                        ),
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SizedBox(
-                                height: 110,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    if (_image == null)
-                                      Icon(
-                                        Icons.camera_alt,
-                                        size: 42,
-                                        color: Colors.black54,
-                                      ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    SizedBox(
-                                      height: 30,
-                                      width: 30,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          pickImage();
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                          shape: CircleBorder(),
-                                          padding: EdgeInsets.all(0),
-                                          backgroundColor: Colors.white,
-                                        ),
-                                        child: Icon(
-                                          Icons.add,
-                                          color: Colors.black,
-                                          size: 20,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
+                      SizedBox(height: 30),
+                      Text(
+                        "Choose your Photos",
+                        style: GoogleFonts.poppins(fontSize: 21, fontWeight: FontWeight.w800),
                       ),
-                      SizedBox(width: 12),
-                      Container(
-                        padding: EdgeInsets.all(12),
-                        clipBehavior: Clip.antiAlias,
-                        height: 230,
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        decoration: BoxDecoration(
-                          color: Color(0xffd1dcdc),
-                          image: _image2 != null
-                              ? DecorationImage(
-                            image: FileImage(_image2!),
-                            fit: BoxFit.cover,
-                          )
-                              : null,
-                          borderRadius: BorderRadius.circular(26),
-                        ),
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SizedBox(
-                                height: 110,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    if (_image2 == null)
-                                      Icon(
-                                        Icons.camera_alt,
-                                        size: 42,
-                                        color: Colors.black54,
-                                      ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    SizedBox(
-                                      height: 30,
-                                      width: 30,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          pickImage2();
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                          shape: CircleBorder(),
-                                          padding: EdgeInsets.all(0),
-                                          backgroundColor: Colors.white,
-                                        ),
-                                        child: Icon(
-                                          Icons.add,
-                                          color: Colors.black,
-                                          size: 20,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
+                      Text(
+                        "Upload at least 1 photo to get started",
+                        style: GoogleFonts.poppins(fontSize: 16),
                       ),
+                      SizedBox(height: 18),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(12),
+                            clipBehavior: Clip.antiAlias,
+                            height: 230,
+                            width: 200,
+                            decoration: BoxDecoration(
+                              color: Color(0xffd1dcdc),
+                              image: _image != null
+                                  ? DecorationImage(
+                                image: FileImage(_image!),
+                                fit: BoxFit.cover,
+                              )
+                                  : null,
+                              borderRadius: BorderRadius.circular(26),
+                            ),
+                            child: Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    height: 110,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        if (_image == null)
+                                          Icon(
+                                            Icons.camera_alt,
+                                            size: 42,
+                                            color: Colors.black54,
+                                          ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      children: [
+                                        SizedBox(
+                                          height: 30,
+                                          width: 30,
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              pickImage();
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                              shape: CircleBorder(),
+                                              padding: EdgeInsets.all(0),
+                                              backgroundColor: Colors.white,
+                                            ),
+                                            child: Icon(
+                                              Icons.add,
+                                              color: Colors.black,
+                                              size: 20,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 12),
+                          Container(
+                            padding: EdgeInsets.all(12),
+                            clipBehavior: Clip.antiAlias,
+                            height: 230,
+                            width: 200,
+                            decoration: BoxDecoration(
+                              color: Color(0xffd1dcdc),
+                              image: _image2 != null
+                                  ? DecorationImage(
+                                image: FileImage(_image2!),
+                                fit: BoxFit.cover,
+                              )
+                                  : null,
+                              borderRadius: BorderRadius.circular(26),
+                            ),
+                            child: Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    height: 110,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        if (_image2 == null)
+                                          Icon(
+                                            Icons.camera_alt,
+                                            size: 42,
+                                            color: Colors.black54,
+                                          ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      children: [
+                                        SizedBox(
+                                          height: 30,
+                                          width: 30,
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              pickImage2();
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                              shape: CircleBorder(),
+                                              padding: EdgeInsets.all(0),
+                                              backgroundColor: Colors.white,
+                                            ),
+                                            child: Icon(
+                                              Icons.add,
+                                              color: Colors.black,
+                                              size: 20,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
                     ],
-                  )
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 24),
+                    child: SizedBox(
+                      height: 55,
+                      width: 400,
+                      child: CustomButton(
+                        text: "Upload Photos",
+                        borderRadius: 32,
+                        onPressed: () {
+                          Get.to(InterestScreen());
+
+                        },
+                        height: LoveTaleSizes.buttonHeight,
+                        width: 327,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
-
-            Positioned(
-              bottom: 20,
-              left: 0,
-              right: 0,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: SizedBox(
-                    height: 55,
-                    width: double.infinity,
-                    child: CustomButton(
-                      text: "Upload Photos",
-                      borderRadius: 32,
-                      onPressed: () {
-                        Get.to(InterestScreen());
-
-                      },
-                      height: LoveTaleSizes.buttonHeight,
-                      width: 327,
-                    ),
-                   ),
-              ))]
-
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
-// ElevatedButton(
-// style: ElevatedButton.styleFrom(
-// backgroundColor: Colors.black,
-// foregroundColor: Colors.white
-// ),
-// onPressed: () {
-// Get.to(InterestScreen());
-// }, child: Text('Upload Photos',style: GoogleFonts.poppins(fontWeight: FontWeight.w600),))

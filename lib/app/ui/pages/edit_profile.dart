@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -50,7 +51,107 @@ class EditProfile extends StatelessWidget {
                           break;
                         case MenuOption.logout:
                         // Perform logout logic here
-                          _showLogoutDialog(context);
+                       showDialog(
+                         context: context,
+                         builder: (BuildContext context) {
+                           return Dialog(
+                             shape:
+                             RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                             backgroundColor: Colors.white,
+                             child: Container(
+                               width: 230,
+                               height: 152,
+                               decoration: BoxDecoration(
+                                 color: Colors.white,
+                                 borderRadius: BorderRadius.circular(20),
+                               ),
+                               child: Column(
+                                 crossAxisAlignment: CrossAxisAlignment.center,
+                                 children: [
+                                   SizedBox(
+                                     height: 18,
+                                   ),
+                                   Center(
+                                     child: Text(
+                                       'Logout?',
+                                       style: GoogleFonts.poppins(
+                                         fontSize: 18,
+                                         color: Colors.black87,
+                                         fontWeight: FontWeight.w700,
+                                       ),
+                                     ),
+                                   ),
+                                   SizedBox(height: 7),
+                                   Text(
+                                     'Are you sure you want to logout?',
+                                     style: GoogleFonts.poppins(
+                                       fontSize: 12.6,
+                                       color: Colors.black38,
+                                     ),
+                                     textAlign: TextAlign.center,
+                                   ),
+                                   SizedBox(height: 30),
+                                   Row(
+                                     children: [
+                                       Expanded(
+                                         child: Container(
+                                           width: 140,
+                                           height: 53,
+                                           decoration: BoxDecoration(
+                                               borderRadius: BorderRadius.only(
+                                                   bottomLeft: Radius.circular(20)),
+                                               border: Border.all(color: Colors.grey.shade300)),
+                                           child: Center(
+                                             child: GestureDetector(
+                                               onTap: () {
+                                                 Get.back();
+                                               },
+                                               child: Text(
+                                                 'Cancel',
+                                                 style: GoogleFonts.poppins(
+                                                   fontSize: 14.2,
+                                                   color: Colors.black38,
+                                                   fontWeight: FontWeight.w600,
+                                                 ),
+                                               ),
+                                             ),
+                                           ),
+                                         ),
+                                       ),
+                                       Expanded(
+                                         child: Container(
+                                           width: 140,
+                                           height: 53,
+                                           decoration: BoxDecoration(
+                                               borderRadius: BorderRadius.only(
+                                                   bottomRight: Radius.circular(20)),
+                                               border: Border.all(color: Colors.grey.shade300)),
+                                           child: Center(
+                                             child: GestureDetector(
+                                               onTap: () {
+                                                 Get.back();
+                                                 _loginController.signOut();
+                                               },
+                                               child: Text(
+                                                 'Logout',
+                                                 style: GoogleFonts.poppins(
+                                                   fontSize: 14.2,
+                                                   color: AppColors.pink,
+                                                   fontWeight: FontWeight.w600,
+                                                 ),
+                                               ),
+                                             ),
+                                           ),
+                                         ),
+                                       ),
+                                     ],
+                                   ),
+                                 ],
+                               ),
+                             ),
+                           );
+                         },
+                       );
                           break;
                       }
                     },
@@ -149,6 +250,7 @@ class SettingsPage extends StatelessWidget {
   }
 }
 void _showLogoutDialog(BuildContext context) {
+  // Add any necessary variables and methods here
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -170,8 +272,9 @@ void _showLogoutDialog(BuildContext context) {
                 height: 18,
               ),
               GestureDetector(
-                onTap: () {
+                onTap: () async{
                   Get.back();
+
                 },
                 child: Text(
                   'Logout?',

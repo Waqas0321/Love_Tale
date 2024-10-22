@@ -475,7 +475,7 @@ class Filters extends StatelessWidget {
                         child: CustomButton(
                           text: "Next",
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => BottomScreen(),));
+                           Navigator.pop(context);
                           },
                           textColor: Colors.white,
                           borderRadius: 30.0,

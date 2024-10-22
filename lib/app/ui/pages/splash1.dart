@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:love_tale/app/ui/pages/splash.dart';
 import 'package:love_tale/app/utils/const/app_color.dart';
+import 'package:get/get.dart';
 
 class Splash1Screen extends StatefulWidget {
   const Splash1Screen({super.key});
@@ -11,38 +12,53 @@ class Splash1Screen extends StatefulWidget {
 }
 
 class _Splash1ScreenState extends State<Splash1Screen> {
+  int _secondsRemaining = 2; // Start the timer from 5 seconds
+  late Timer _timer;
+
   @override
   void initState() {
     super.initState();
-    // Start navigation timer in initState so it runs only once
-    navigation();
+    startCountdown();
   }
 
-  void navigation() {
-    Timer(
-      Duration(milliseconds: 2000),
-          () => Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => SplashScreen()),
-            (Route<dynamic> route) => false,
-      ),
-    );
+  void startCountdown() {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      if (_secondsRemaining > 0) {
+        setState(() {
+          _secondsRemaining--; // Decrease the timer
+        });
+      } else {
+        _timer.cancel();
+        if (mounted) {
+          // Only navigate if the widget is still mounted
+          Get.offAll(SplashScreen());
+        }
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel(); // Cancel the timer when the widget is disposed
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Center(
-        child: Container(
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          gradient: AppColors.customGradient
+        ),
+        child: Center(
           child: Image.asset(
-            'assets/images/splash.jpeg',
+            'assets/images/logoImage.png',
+            height: 150,
+            width: 150,
             fit: BoxFit.cover,
-          ),
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            gradient: AppColors.customGradient,
           ),
         ),
       ),

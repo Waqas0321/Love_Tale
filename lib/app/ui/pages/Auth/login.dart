@@ -17,7 +17,7 @@ import '../../../utils/widgets/custom_svg_image.dart';
 
 class LoginScreen extends GetView<LoginController> {
   // Initialize the controller
-  final controller = Get.find<LoginController>();
+  final controller = Get.put(LoginController());
   final LoveTaleSizes _sizes = LoveTaleSizes();
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class LoginScreen extends GetView<LoginController> {
                       ),
                       SizedBox(height: LoveTaleSizes.spaceBTWItems,),
                       Text(
-                        AppString.whats_your_mail,
+                        'Sign In here',
                         style: GoogleFonts.poppins(
                           fontSize: 23,
                           fontWeight: FontWeight.bold,
@@ -104,7 +104,7 @@ class LoginScreen extends GetView<LoginController> {
                         SizedBox(
                           width: double.infinity * 0.9,
                           child: CustomButton(
-                              text: "Sign Up",
+                              text: "Sign In",
                               fontSize: 12,
                               borderRadius: 30,
                               onPressed: () {

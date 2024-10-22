@@ -46,17 +46,19 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(fit: StackFit.expand, children: [
-      Center(
-        child: Container(
-          height: Get.height,
-          width: Get.width,
-          child: AspectRatio(
-            aspectRatio: _videoPlayerController.value.aspectRatio,
-            child: VideoPlayer(_videoPlayerController),
+    return Center(
+      child: Stack(fit: StackFit.expand, children: [
+        Center(
+          child: Container(
+            height: Get.height,
+            width: Get.width,
+            child: AspectRatio(
+              aspectRatio: _videoPlayerController.value.aspectRatio,
+              child: VideoPlayer(_videoPlayerController),
+            ),
           ),
         ),
-      ),
-    ]);
+      ]),
+    );
   }
 }

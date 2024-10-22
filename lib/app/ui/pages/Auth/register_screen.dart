@@ -52,7 +52,7 @@ class RegisterScreen extends GetView<RegisterControler> {
                       ),
                       SizedBox(height: LoveTaleSizes.spaceBTWItems,),
                       Text(
-                        AppString.whats_your_mail,
+                        'Resister now',
                         style: GoogleFonts.poppins(
                           fontSize: 23,
                           fontWeight: FontWeight.bold,

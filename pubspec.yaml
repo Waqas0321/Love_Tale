@@ -52,6 +52,8 @@ dependencies:
   fl_chart: ^0.69.0
   latlong2: ^0.9.1
   speedometer_chart: ^1.0.8
+  percent_indicator: ^4.2.3
+  flutter_map_cancellable_tile_provider: ^3.0.2
 
   #  multi_image_picker2: ^8.0.0
 

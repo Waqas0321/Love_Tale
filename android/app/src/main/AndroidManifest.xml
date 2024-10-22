@@ -7,10 +7,14 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <application
+        android:usesCleartextTraffic="true"
         android:label="love_tale"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
-        android:usesCleartextTraffic="true"
+        android:icon="@mipmap/ic_launcher"
+        android:enableOnBackInvokedCallback="true"
+        >
+
+
         <activity
             android:name=".MainActivity"
             android:enableOnBackInvokedCallback="true"
