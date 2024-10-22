@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:love_tale/app/bindings/bottom_screen.dart';
+import 'package:love_tale/app/ui/pages/Auth/languages_screen.dart';
 import 'package:love_tale/app/ui/pages/Auth/login.dart';
 import 'package:love_tale/app/ui/pages/policies.dart';
 import 'package:video_player/video_player.dart';
@@ -16,7 +17,7 @@ class Splash2Controller extends GetxController {
     Timer(const Duration(seconds: 12), () {
       User? user = FirebaseAuth.instance.currentUser;
       if(user == null){
-        Get.off(() =>LoginScreen());
+        Get.off(() =>LanguagesScreen());
       }
       else{
         Get.off(() =>BottomScreen());

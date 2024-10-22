@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:love_tale/Constants/love_tale_Sizes.dart';
+import 'package:love_tale/app/bindings/bottom_screen.dart';
 import 'package:love_tale/app/ui/pages/matchesMessagesTabBar.dart';
 import 'package:love_tale/app/ui/settings_Screen.dart';
 import '../controllers/auth/filter_controller.dart';
@@ -474,7 +475,7 @@ class Filters extends StatelessWidget {
                         child: CustomButton(
                           text: "Next",
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => MatchesMessagesTabBarScreen(),));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => BottomScreen(),));
                           },
                           textColor: Colors.white,
                           borderRadius: 30.0,

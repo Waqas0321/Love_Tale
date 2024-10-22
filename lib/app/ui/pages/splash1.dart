@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:love_tale/app/ui/pages/splash.dart';
 import 'package:love_tale/app/utils/const/app_color.dart';
 
@@ -15,11 +13,19 @@ class Splash1Screen extends StatefulWidget {
 class _Splash1ScreenState extends State<Splash1Screen> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    // Start navigation timer in initState so it runs only once
+    navigation();
+  }
+
+  void navigation() {
     Timer(
-      Duration(seconds: 2),
-      () => Get.offAll(SplashScreen()),
+      Duration(milliseconds: 2000),
+          () => Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => SplashScreen()),
+            (Route<dynamic> route) => false,
+      ),
     );
   }
 

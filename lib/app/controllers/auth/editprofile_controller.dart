@@ -7,7 +7,7 @@ class EditProfileController extends GetxController {
   var about = 'Fashion lover, Other stuff that\'s mildly interesting.'.obs;
   var age = '23'.obs;
   var location = 'Madrid, Spain'.obs;
-  var gender = 'Transgender Male'.obs;
+  var gender = 'Male'.obs;
   var passions = 'Fashion, Instagram, Style, Art, Drawing, Poetry'.obs;
   var profession = 'Fashion Critic'.obs;
   var socialMedia = 'Instagram'.obs;

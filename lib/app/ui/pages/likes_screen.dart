@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:card_swiper/card_swiper.dart';
+import 'package:love_tale/app/bindings/bottom_screen.dart';
 import '../../controllers/likes_controller.dart';
 import '../../utils/const/app_color.dart';
 import '../../utils/const/app_strings.dart';
@@ -105,193 +106,202 @@ class LikesScreen extends StatelessWidget {
               child: Row(
                 // mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Container(
-                    width: 114,
-                    height: 136,
-                    decoration: BoxDecoration(
-                        color: Colors.grey.shade100,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(12),
-                            bottomLeft: Radius.circular(12)),
-                        border: Border.all(color: AppColors.pink, width: 2)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(height: 20),
-                        Text(
-                          "3",
-                          style: GoogleFonts.poppins(
-                            fontSize: 27,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black87,
-                          ),
-                        ),
-                        Text(
-                          "months",
-                          style: GoogleFonts.poppins(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black87,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 3,
-                        ),
-                        Text(
-                          "USD 50/mo",
-                          style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black87,
-                          ),
-                        ),
-                        // SizedBox(height:16),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 135,
-                    height: 174,
-                    decoration: BoxDecoration(
-                        color: AppColors.pink,
-                        borderRadius: BorderRadius.circular(13),
-                        border: Border.all(color: AppColors.pink, width: 3)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 7,
-                        ),
-                        Container(
-                          width: 120,
-                          height: 28,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(8),
-                                  topRight: Radius.circular(8))),
-                          child: Center(
-                            child: Text(
-                              "Most Popular",
-                              style: GoogleFonts.poppins(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.black54,
-                              ),
+                  Expanded(
+                    child: Container(
+                      width: 114,
+                      height: 136,
+                      decoration: BoxDecoration(
+                          color: Colors.grey.shade100,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(12),
+                              bottomLeft: Radius.circular(12)),
+                          border: Border.all(color: AppColors.pink, width: 2)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(height: 20),
+                          Text(
+                            "3",
+                            style: GoogleFonts.poppins(
+                              fontSize: 27,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black87,
                             ),
                           ),
-                        ),
-                        Text(
-                          "6",
-                          style: GoogleFonts.poppins(
-                            fontSize: 30,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white,
+                          Text(
+                            "months",
+                            style: GoogleFonts.poppins(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black87,
+                            ),
                           ),
-                        ),
-                        Text(
-                          "months",
-                          style: GoogleFonts.poppins(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
+                          SizedBox(
+                            height: 3,
                           ),
-                        ),
-                        SizedBox(
-                          height: 2,
-                        ),
-                        Text(
-                          "USD 10/mo",
-                          style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white,
+                          Text(
+                            "USD 50/mo",
+                            style: GoogleFonts.poppins(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black87,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 16),
-                        Container(
-                          width: 115,
-                          height: 28,
-                          decoration: BoxDecoration(
-                              color: Colors.red.shade600,
-                              borderRadius: BorderRadius.only(
-                                  bottomRight: Radius.circular(6),
-                                  bottomLeft: Radius.circular(6))),
-                          child: Center(
-                            child: Text(
-                              "Save 50%",
-                              style: GoogleFonts.poppins(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
+                          // SizedBox(height:16),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      width: 135,
+                      height: 174,
+                      decoration: BoxDecoration(
+                          color: AppColors.pink,
+                          borderRadius: BorderRadius.circular(13),
+                          border: Border.all(color: AppColors.pink, width: 3)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 7,
+                          ),
+                          Container(
+                            width: 120,
+                            height: 28,
+                            decoration: BoxDecoration(
                                 color: Colors.white,
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(8),
+                                    topRight: Radius.circular(8))),
+                            child: Center(
+                              child: Text(
+                                "Most Popular",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.black54,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                          Text(
+                            "6",
+                            style: GoogleFonts.poppins(
+                              fontSize: 30,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Text(
+                            "months",
+                            style: GoogleFonts.poppins(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 2,
+                          ),
+                          Text(
+                            "USD 10/mo",
+                            style: GoogleFonts.poppins(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                            ),
+                          ),
+                          SizedBox(height: 16),
+                          Container(
+                            width: 115,
+                            height: 28,
+                            decoration: BoxDecoration(
+                                color: Colors.red.shade600,
+                                borderRadius: BorderRadius.only(
+                                    bottomRight: Radius.circular(6),
+                                    bottomLeft: Radius.circular(6))),
+                            child: Center(
+                              child: Text(
+                                "Save 50%",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  Container(
-                    width: 114,
-                    height: 136,
-                    decoration: BoxDecoration(
-                        color: Colors.grey.shade100,
-                        borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(12),
-                            bottomRight: Radius.circular(12)),
-                        border: Border.all(color: AppColors.pink, width: 2)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(height: 20),
-                        Text(
-                          "1",
-                          style: GoogleFonts.poppins(
-                            fontSize: 27,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black87,
+                  Expanded(
+                    child: Container(
+                      width: 114,
+                      height: 136,
+                      decoration: BoxDecoration(
+                          color: Colors.grey.shade100,
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(12),
+                              bottomRight: Radius.circular(12)),
+                          border: Border.all(color: AppColors.pink, width: 2)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(height: 20),
+                          Text(
+                            "1",
+                            style: GoogleFonts.poppins(
+                              fontSize: 27,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black87,
+                            ),
                           ),
-                        ),
-                        Text(
-                          "months",
-                          style: GoogleFonts.poppins(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black87,
+                          Text(
+                            "months",
+                            style: GoogleFonts.poppins(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black87,
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 3,
-                        ),
-                        Text(
-                          "USD 20/mo",
-                          style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black87,
+                          SizedBox(
+                            height: 3,
                           ),
-                        ),
-                        // SizedBox(height:16),
-                      ],
+                          Text(
+                            "USD 20/mo",
+                            style: GoogleFonts.poppins(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black87,
+                            ),
+                          ),
+                          // SizedBox(height:16),
+                        ],
+                      ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
             SizedBox(height: 28),
             Center(
-              child: CustomButton(
-                text: AppString.continues,
-                onPressed: () {
-                  // Get.toNamed("login_screen");
-                },
-                color: AppColors.pink,
-                textColor: Colors.white,
-                borderRadius: 30.0,
-                padding: 12.0,
-                fontSize: 18.0,
-                height: 47.0, // Custom height
-                width: 360.0, // Custom width
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: CustomButton(
+                  text: AppString.continues,
+                  onPressed: () {
+                    Get.offAll(BottomScreen());
+                  },
+                  color: AppColors.pink,
+                  textColor: Colors.white,
+                  borderRadius: 30.0,
+                  padding: 12.0,
+                  fontSize: 18.0,
+                  height: 47.0, // Custom height
+                  width: 360.0, // Custom width
+                ),
               ),
             ),
             SizedBox(

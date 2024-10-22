@@ -41,7 +41,7 @@ class _FirstNameScreenState extends State<FirstNameScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 30, top: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 18,vertical: 12),
               child: SizedBox(
                 width: 250,
                 child: Text(
@@ -50,14 +50,13 @@ class _FirstNameScreenState extends State<FirstNameScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 18),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 18),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '     Your first name',
+                    'Your first name',
                     style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                   SizedBox(height: 3),
@@ -67,7 +66,7 @@ class _FirstNameScreenState extends State<FirstNameScreen> {
             ),
             SizedBox(height: 36),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 18),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -79,11 +78,11 @@ class _FirstNameScreenState extends State<FirstNameScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Month',
+                      Text('     Month',
                           style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400,color: Colors.black54)),
-                      Text('Day',
+                      Text('      Day',
                           style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400,color: Colors.black54)),
-                      Text('Year',
+                      Text('      Year',
                           style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400,color: Colors.black54)),
                       SizedBox.shrink()
                     ],
