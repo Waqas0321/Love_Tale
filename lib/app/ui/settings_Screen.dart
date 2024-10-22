@@ -10,7 +10,7 @@ import '../controllers/auth/setting_controller.dart';
 import '../utils/const/app_color.dart';
 import '../utils/widgets/app_button.dart';
 
-class Settings extends StatelessWidget {
+class SettingsScreen extends StatelessWidget {
   final SettingsController controller = Get.put(SettingsController());
   LoveTaleSizes _sizes = LoveTaleSizes();
 

@@ -53,7 +53,7 @@ class _MatchesMessagesTabBarScreenState extends State<MatchesMessagesTabBarScree
               SizedBox(width: 8,),
               InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Settings(),));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsScreen(),));
                   },
                   child: Icon(Icons.settings, color: Colors.black54,size: 22,)),
 

@@ -21,7 +21,7 @@ class EditProfile extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
@@ -29,7 +29,9 @@ class EditProfile extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.arrow_back, color: AppColors.pink),
+                  GestureDetector(
+                      onTap:()=> Get.back(),
+                      child: const Icon(Icons.arrow_back, color: AppColors.pink)),
                   Text(
                     'Edit Profile',
                     style: GoogleFonts.poppins(
@@ -37,7 +39,7 @@ class EditProfile extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         color: Colors.black87),
                   ),
-                  Icon(
+                  const Icon(
                     Icons.more_horiz_rounded,
                     color: AppColors.pink,
                     size: 27,
@@ -47,7 +49,7 @@ class EditProfile extends StatelessWidget {
             ),
             Expanded(
               child: ListView(
-                padding: EdgeInsets.only(left: 24, right: 19, top: 14),
+                padding: const EdgeInsets.only(left: 24, right: 19, top: 14),
                 children: [
                   controller.buildProfileItem('About Karter', controller.about.value),
                   controller.buildDivider(),
@@ -60,13 +62,29 @@ class EditProfile extends StatelessWidget {
                   controller.buildProfileItem('Passions', controller.passions.value),
                   controller.buildDivider(),
                   controller.buildProfileItem('Profession', controller.profession.value),
-                  // controller.buildDivider(),
+                  controller.buildDivider(),
                   // controller.buildProfileItem('Social media', controller.socialMedia.value),
                   // controller.buildDivider(),
                   // controller.buildProfileItem('Show my Instagram photos', controller.showInstagramPhotos.value),
+                   SizedBox(
+                     height: 50,
+                     child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Icon(Icons.verified,color: Colors.green,),
+                        SizedBox(width: 6,),
+                        Text('Verified',style: GoogleFonts.poppins(
+                          color: Colors.black,
+                          fontSize: 14
+                        ),)
+                      ],
+                                       ),
+                   ),
+                  controller.buildDivider(),
                 ],
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.only(left: 10, right: 10, bottom: 13),
               child: CustomButton(
@@ -84,6 +102,7 @@ class EditProfile extends StatelessWidget {
                 width: 358.0,
               ),
             ),
+
           ],
         ),
       ),

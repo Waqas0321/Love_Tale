@@ -48,6 +48,6 @@ class AppRoutes {
         GetPage(name: "/EditProfile", page: () => EditProfile()),
         GetPage(name: "/Username", page: () => Username()),
         GetPage(name: "/Filters", page: () => Filters()),
-        GetPage(name: "/Settings", page: () => Settings()),
+        GetPage(name: "/Settings", page: () => SettingsScreen()),
       ];
 }

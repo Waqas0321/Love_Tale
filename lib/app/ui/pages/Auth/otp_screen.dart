@@ -134,7 +134,7 @@ class OtpScreen extends StatelessWidget {
                       InkWell(
                         onTap: () {
                           _controller.resendCode();
-                          _controller.startTimer();
+                          _controller.seconds.value = 30;
                         },
                         child: Container(
                           width: 90,

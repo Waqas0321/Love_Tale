@@ -55,7 +55,6 @@ class OtpController extends GetxController {
   }
 
   void resendCode() {
-    resetTimer();
   }
 
   void submitCode() {

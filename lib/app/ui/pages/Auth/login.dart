@@ -118,96 +118,11 @@ class LoginScreen extends GetView<LoginController> {
                             ),
                           ],
                         ),
-                        SizedBox(
-                          height: LoveTaleSizes.spaceBTWSections,
-                        ),
-                        SizedBox(
-                          width: contentWidth,
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: CustomButton(
-                                    text: "Continue",
-                                    imagePath: AppImages.apple,
-                                    showImage: true,
-                                    fontSize: 11,
-                                    borderRadius: 30,
-                                    onPressed: () {
-                                    },
-                                    height: LoveTaleSizes.buttonHeight,
-                                    width: MediaQuery.of(context).size.width / 2.3),
-                              ),
-                              SizedBox(width: LoveTaleSizes.spaceBTWItems,),
-                              Expanded(
-                                child: CustomButton(
-                                    text: "Continue",
-                                    fontSize: 12,
-                                    imagePath: AppImages.facebook,
-                                    showImage: true,
-                                    borderRadius: 30,
-                                    onPressed: () {
-                                    },
-                                    height: LoveTaleSizes.buttonHeight,
-                                    width: buttonWidth),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: LoveTaleSizes.spaceBTWItems,
-                        ),
-
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-
-                          Expanded(
-                            child: SizedBox(
-                              width: Get.width * 0.5,
-                              child: CustomButton(
-                                  text: "Continue",
-                                  fontSize: 12,
-                                  showIcon: true,
-                                  borderRadius: 30,
-                                  onPressed: () {
-                                    Get.to(PhoneScreen());
-                                  },
-                                  height: LoveTaleSizes.buttonHeight,
-                                  width: 110),
-                            ),
-                          ),
-                            SizedBox(width: LoveTaleSizes.spaceBTWItems),
-                            Expanded(
-                              child: SizedBox(
-                                width: Get.width * 0.5,
-                                child: CustomButton(
-                                    text: "Continue",
-                                    fontSize: 12,
-                                    gradientColor: false,
-                                    showImage: true,
-                                    textColor: Colors.black,
-                                    imagePath: 'assets/images/img_1.png',
-                                    borderRadius: 30,
-                                    onPressed: () async {
-                                      controller.onContinueWithGoogle();
-                                      final user = await controller.signInWithGoogle();
-                                      if(user != null){
-                                        Get.snackbar('Congratulations ${user.displayName}', 'Welcome to the Love Tale');
-                                        Get.to(BottomScreen());
-                                      }else{
-                                        Get.snackbar('Error', 'Not SignIn on Love Tale');
-                                      }
-                                    },
-                                    height: LoveTaleSizes.buttonHeight,
-                                    width: 110),
-                              ),
-                            )
-                        ],)
                       ],
                     ),
                   ),
                   // Row with buttons
-                  SizedBox(height: LoveTaleSizes.spaceBTWSections),
+                  SizedBox(height: LoveTaleSizes.spaceBTWSections *3),
                   Center(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,

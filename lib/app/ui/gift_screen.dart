@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:love_tale/app/ui/select_hotel.dart';
+import 'package:love_tale/app/ui/settings_Screen.dart';
 import '../controllers/gift_controller.dart';
 import '../utils/const/app_color.dart';
 import '../utils/const/app_images.dart';
@@ -28,7 +29,15 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-class GiftScreen extends StatelessWidget {
+class GiftScreen extends StatefulWidget {
+
+   GiftScreen({super.key});
+
+  @override
+  State<GiftScreen> createState() => _GiftScreenState();
+}
+
+class _GiftScreenState extends State<GiftScreen> {
   final GiftController controller = Get.put(GiftController());
 
   @override
@@ -59,7 +68,11 @@ class GiftScreen extends StatelessWidget {
                 ),
               ),
               Spacer(),
-              Icon(Icons.settings, color: Colors.black54, size: 22),
+              GestureDetector(
+                  onTap: () {
+                    Get.to(SettingsScreen());
+                  },
+                  child: Icon(Icons.settings, color: Colors.black54, size: 22)),
             ],
           ),
           backgroundColor: Colors.transparent,
@@ -100,16 +113,19 @@ class GiftScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: 0.85,
+                    childAspectRatio: 0.75,
                     crossAxisSpacing: 18.0,
-                    mainAxisSpacing: 10.0,
+                    mainAxisSpacing: 12.0,
                   ),
                   itemCount: controller.gift.length,
                   itemBuilder: (context, index) {
                     final isSelected = controller.selectedIndex.value == index;
                     return GestureDetector(
                       onTap: () {
-                        // controller.setSelectedIndex(index);
+                        setState(() {
+                          controller.setSelectedIndex(index);
+                        });
+
                         // Get.to(() => HotelDetailScreen());
                       },
                       child: Card(
@@ -117,43 +133,47 @@ class GiftScreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(18.0)),
-                              child: Image.asset(
-                                controller.gift[index]['image']!,
-                                height: 139.0,
-                                width: double.infinity,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Column(
+                        child: SingleChildScrollView(
+                          child: Container(
+                            child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                SizedBox(height: 6),
-                                Text(
-                                  controller.gift[index]['name']!,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w800,
-                                    fontSize: 16.0,
-                                    color: isSelected ? Colors.white : Colors.black,
+                                ClipRRect(
+                                  borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(18.0)),
+                                  child: Image.asset(
+                                    controller.gift[index]['image']!,
+                                    height: 139.0,
+                                    width: double.infinity,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(height: 6),
+                                    Text(
+                                      controller.gift[index]['name']!,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w800,
+                                        fontSize: 16.0,
+                                        color: isSelected ? Colors.white : Colors.black,
+                                      ),
+                                    ),
 
-                                Text(
-                                  controller.gift[index]['distance']!,
-                                  style: TextStyle(
-                                    color: isSelected ? Colors.white : Colors.black54,
-                                    fontSize: 12.0,
-                                  ),
+                                    Text(
+                                      controller.gift[index]['distance']!,
+                                      style: TextStyle(
+                                        color: isSelected ? Colors.white : Colors.black54,
+                                        fontSize: 12.0,
+                                      ),
+                                    ),
+                                    SizedBox(height: 1.0),
+                                  ],
                                 ),
-                                SizedBox(height: 1.0),
                               ],
                             ),
-                          ],
+                          ),
                         ),
                       ),
                     );

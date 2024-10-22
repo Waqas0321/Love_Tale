@@ -8,12 +8,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:love_tale/app/Models/user_chat_model.dart';
+import 'package:love_tale/app/ui/pages/edit_profile.dart';
+import 'package:love_tale/app/ui/settings_Screen.dart';
 import '../../../Models/chat_model.dart';
 import '../../../utils/const/app_color.dart';
-import '../../../utils/const/app_images.dart';
 import '../../../utils/firebase_util.dart';
 import '../../gift_screen.dart';
-import '../../settings_Screen.dart';
 import '../personal_details/custom_chart_row.dart';
 
 class CombinedScreen extends StatefulWidget {
@@ -149,7 +149,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                 ),
                 InkWell(
                     onTap: () {
-                      // Navigator.push(context, MaterialPageRoute(builder: (context) =>Setting() ,));
+                      Get.to(SettingsScreen());
                     },
                     child: Icon(
                       Icons.settings,
@@ -165,117 +165,89 @@ class _CombinedScreenState extends State<CombinedScreen> {
         body: SafeArea(
           child: Column(
             children: [
-                ProfileSection(
-                  username: widget.username,
-                  age: widget.age,
-                  status: widget.status,
-                  location: widget.location,
-                  image: widget.image,
-                ),
+              // Only show ProfileSection if chat.myMessages.length <= 4
+              StreamBuilder(
+                stream: FirebaseUtil.userReference
+                    .doc(user!.uid)
+                    .collection("mychats")
+                    .where("receiverUID", isEqualTo: widget.selectedId)
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                  if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                    return ProfileSection(
+                      username: widget.username,
+                      age: widget.age,
+                      status: widget.status,
+                      location: widget.location,
+                      image: widget.image,
+                    );
+                  }
+
+                  final chat = UserChatModel.fromJson(snapshot.data!.docs[0].data());
+                  // Check if the number of messages is less than or equal to 4
+                  if (chat.myMessages.length <= 4) {
+                    return ProfileSection(
+                      username: widget.username,
+                      age: widget.age,
+                      status: widget.status,
+                      location: widget.location,
+                      image: widget.image,
+                    );
+                  } else {
+                    return SizedBox(height: 10,); // Return an empty container if messages are more than 4
+                  }
+                },
+              ),
               SimplePercentageRow(),
-              // Expanded(
-              //   child: ListView.builder(
-              //     padding: EdgeInsets.symmetric(horizontal: 20),
-              //     itemCount: messages.length,
-              //     itemBuilder: (context, index) {
-              //       final message = messages[index];
-              //       final dateHeader = index == 0 ||
-              //               messages[index]['date'] != messages[index - 1]['date']
-              //           ? _formatDate(message['date']!)
-              //           : null;
-              //
-              //       return Column(
-              //         crossAxisAlignment: message[user?.email] == "true"
-              //             ? CrossAxisAlignment.end
-              //             : CrossAxisAlignment.start,
-              //         children: [
-              //           if (dateHeader != null)
-              //             Padding(
-              //               padding: const EdgeInsets.symmetric(vertical: 10),
-              //               child: Center(
-              //                 child: Container(
-              //                   width: 90,
-              //                   height: 30,
-              //                   decoration: BoxDecoration(
-              //                     color: Colors.white,
-              //                     borderRadius: BorderRadius.circular(20),
-              //                     boxShadow: [
-              //                       BoxShadow(
-              //                         color: Colors.grey.withOpacity(0.2),
-              //                         spreadRadius: 0.2,
-              //                         blurRadius: 2,
-              //                         offset: Offset(0, 3),
-              //                       ),
-              //                     ],
-              //                   ),
-              //                   child: Center(
-              //                     child: Text(
-              //                       dateHeader,
-              //                       style: GoogleFonts.poppins(
-              //                         fontSize: 12.5,
-              //                         color: AppColors.pink,
-              //                       ),
-              //                     ),
-              //                   ),
-              //                 ),
-              //               ),
-              //             ),
-                        Expanded(
-                          child: StreamBuilder(
-                            stream: FirebaseUtil.userReference
-                                .doc(user!.uid)
-                                .collection("mychats")
-                                .where("receiverUID", isEqualTo: widget.selectedId)
-                                .snapshots(),
-                            builder:  (context, snapshot) {
-                              if (snapshot.connectionState == ConnectionState.waiting) {
-                                // Data is still loading
-                                return const Center(
-                                  child: CircularProgressIndicator(),
-                                );
-                              }
-                              if (!snapshot.hasData) {
-                                // Document does not exist or there's no data
-                                return const Center(
-                                  child:
-                                  Text('Document does not exist or no data available.'),
-                                );
-                              }
-                              if (snapshot.hasData) {
-                                final data = snapshot.data!.docs;
-                                if (data.isNotEmpty) {
-                                  UserChatModel chat =
-                                  UserChatModel.fromJson(data[0].data());
-                                  return ListView.builder(
-                                    shrinkWrap: true,
-                                    itemCount: chat.myMessages.length,
-                                    itemBuilder: (context, index) {
-                                      if (index < chat.myMessages.length) {
-                                        final data = chat.myMessages[index];
-                                        print("Data $data");
-                                        bool isSender = data.senderUID == user!.uid;
-                                        print("Is Sender $isSender");
-                                        Timestamp time = data.dateTime;
-                                        String formattedTime =
-                                        DateFormat.jm().format(time.toDate());
-                                        return MessageBubble(
-                                          isMe: isSender,
-                                          message: data.messege,
-                                          time: formattedTime,
-                                        );
-                                      } else {
-                                        return Container();
-                                      }
-                                    },
-                                  );
-                                }
-                              } else {
-                                return Container();
-                              }
+          SizedBox(height: 10,),
+          Expanded(
+                child: StreamBuilder(
+                  stream: FirebaseUtil.userReference
+                      .doc(user!.uid)
+                      .collection("mychats")
+                      .where("receiverUID", isEqualTo: widget.selectedId)
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    if (!snapshot.hasData) {
+                      return const Center(child: Text('Document does not exist or no data available.'));
+                    }
+                    if (snapshot.hasData) {
+                      final data = snapshot.data!.docs;
+                      if (data.isNotEmpty) {
+                        UserChatModel chat = UserChatModel.fromJson(data[0].data());
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: chat.myMessages.length,
+                          itemBuilder: (context, index) {
+                            if (index < chat.myMessages.length) {
+                              final data = chat.myMessages[index];
+                              bool isSender = data.senderUID == user!.uid;
+                              Timestamp time = data.dateTime;
+                              String formattedTime = DateFormat.jm().format(time.toDate());
+                              return MessageBubble(
+                                isMe: isSender,
+                                message: data.messege,
+                                time: formattedTime,
+                              );
+                            } else {
                               return Container();
                             }
-                          ),
-                        ),
+                          },
+                        );
+                      }
+                    } else {
+                      return Container();
+                    }
+                    return Container();
+                  },
+                ),
+              ),
               Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -333,10 +305,10 @@ class _CombinedScreenState extends State<CombinedScreen> {
                               hintStyle: TextStyle(color: Colors.grey[500]),
                               filled: true,
                               fillColor: Colors.grey[50],
-                              prefixIcon: Icon(
-                                Icons.insert_emoticon,
-                                color: Colors.grey.shade400,
-                              ),
+                              // prefixIcon: Icon(
+                              //   Icons.insert_emoticon,
+                              //   color: Colors.grey.shade400,
+                              // ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide: BorderSide.none,
@@ -399,37 +371,27 @@ class ProfileSection extends StatelessWidget {
     return Column(
       children: [
         SizedBox(height: 20),
-        // Align(
-        //   alignment: Alignment.topLeft,
-        //   child: IconButton(
-        //     icon: Icon(
-        //       Icons.arrow_back,
-        //       color: AppColors.pink,
-        //       size: 26,
-        //     ),
-        //     onPressed: () {
-        //       Navigator.pop(context);
-        //     },
-        //   ),
-        // ),
-        Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.2),
-                spreadRadius: 1,
-                blurRadius: 3,
-                offset: Offset(0, 3), // changes position of shadow
-              ),
-            ],
-          ),
-          child: CircleAvatar(
-            radius: 60,
-            backgroundColor: AppColors.pink,
+        GestureDetector(
+          onTap: () => Get.to(EditProfile()),
+          child: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.2),
+                  spreadRadius: 1,
+                  blurRadius: 3,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            ),
             child: CircleAvatar(
-              radius: 56,
-              backgroundImage: NetworkImage(image),
+              radius: 60,
+              backgroundColor: AppColors.pink,
+              child: CircleAvatar(
+                radius: 56,
+                backgroundImage: NetworkImage(image),
+              ),
             ),
           ),
         ),

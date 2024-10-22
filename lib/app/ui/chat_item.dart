@@ -113,7 +113,7 @@ class _ChatItemState extends State<ChatItem> {
                 selectedId: widget.userId,
                 username: widget.username,
                 age: "23",
-                status: "You're friends on Dater",
+                status: "You're friends on LoveTale",
                 location: "Lives in California, USA",
                 image: widget.image,
               ),

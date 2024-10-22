@@ -5,43 +5,43 @@ import '../utils/const/app_images.dart';
 class GiftController extends GetxController {
   var gift = [
     {
-      'name': 'Eliza William',
-      'distance': '10 miles away',
+      'name': 'GiftName',
+      'distance': '\$120',
       'image': AppImages.Gift1,
     },
     {
-      'name': 'Marie Ann',
-      'distance': '10 miles away',
+      'name': 'Gift Name',
+      'distance': '\$120',
       'image': AppImages.Gift2,
     },
     {
-      'name': 'Mira Dokidis',
-      'distance': '10 miles away',
+      'name': 'Gift Name',
+      'distance': '\$120',
       'image': AppImages.Gift3,
     },
     {
-      'name': 'Tiana Baptista',
-      'distance': '10 miles away',
+      'name': 'Gift Name',
+      'distance': '\$120',
       'image': AppImages.Gift4,
     },
     {
-      'name': 'Rayna Ekstrom',
-      'distance': '10 miles away',
+      'name': 'Gift Name',
+      'distance': '\$120',
       'image': AppImages.Gift5,
     },
     {
-      'name': 'Madelyn Septimus',
-      'distance': '10 miles away',
+      'name': 'Gift Name',
+      'distance': '\$120',
       'image': AppImages.Gift6,
     },
     {
-      'name': 'Tiana Baptista',
-      'distance': '10 miles away',
+      'name': 'Gift Name',
+      'distance': '\$120',
       'image': AppImages.Gift2,
     },
     {
-      'name': 'Marie Ann',
-      'distance': '10 miles away',
+      'name': 'Gift Name',
+      'distance': '\$120',
       'image': AppImages.Gift4,
     },
   ].obs;
