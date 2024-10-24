@@ -125,14 +125,19 @@ final double percentage = 0.8;
                   ),
                 ),
                 SizedBox(width: 10),
-                SizedBox(
-                  width: 150,
-                  child: Text(
-                    widget.username,
-                    style: GoogleFonts.poppins(
-                      fontSize: 17,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfile(),));
+                  },
+                  child: SizedBox(
+                    width: 110,
+                    child: Text(
+                      widget.username,
+                      style: GoogleFonts.poppins(
+                        fontSize: 17,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
@@ -210,29 +215,24 @@ final double percentage = 0.8;
               ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18),
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 0,vertical: 2),
-            decoration: BoxDecoration(
-              border: Border.all(),
-              borderRadius: BorderRadius.circular(32)
-            ),
-            child: LinearPercentIndicator(
-              lineHeight: 14.0,
-              percent: percentage, // Adjust this value dynamically based on the percentage
-              backgroundColor: Colors.white,
-              progressColor: Colors.pink,
-              barRadius: Radius.circular(32), // Rounded edges for the progress bar
-              center: Text(
+          child: LinearPercentIndicator(
+            lineHeight: 16.0,
+            percent: percentage, // Adjust this value dynamically based on the percentage
+            backgroundColor: Colors.grey,
+            progressColor: Colors.pink,
+            barRadius: Radius.circular(32), // Rounded edges for the progress bar
+            center: Center(
+              child: Text(
                 '${percentage * 100}%', // Display percentage inside the bar
                 style: GoogleFonts.poppins(
-                  fontSize: 12.0,
+                  fontSize: 9.0,
                   color:percentage <= 0.55? Colors.black: Colors.white,
                 ),
               ),
-              linearStrokeCap: LinearStrokeCap.roundAll,
-              animation: true,
-              animationDuration: 1000,
             ),
+            linearStrokeCap: LinearStrokeCap.roundAll,
+            animation: true,
+            animationDuration: 1000,
           ),
         ),
           SizedBox(height: 10,),
@@ -302,24 +302,24 @@ final double percentage = 0.8;
                   child: Row(
                     children: [
                       SizedBox(width: 8),
-                      Icon(Icons.add_circle_rounded,
-                          color: AppColors.pink, size: 21),
-                      SizedBox(width: 3),
-                      InkWell(
-                        onTap: () {
-                          _pickImage(ImageSource.camera);
-                        },
-                        child: Icon(Icons.camera_alt_rounded,
-                            color: Colors.pink, size: 21),
-                      ),
-                      SizedBox(width: 3),
-                      InkWell(
-                        onTap: () {
-                          _pickImage(ImageSource.gallery);
-                        },
-                        child: Icon(Icons.photo, color: Colors.pink, size: 22),
-                      ),
-                      SizedBox(width: 3),
+                      // Icon(Icons.add_circle_rounded,
+                      //     color: AppColors.pink, size: 21),
+                      // SizedBox(width: 3),
+                      // InkWell(
+                      //   onTap: () {
+                      //     _pickImage(ImageSource.camera);
+                      //   },
+                      //   child: Icon(Icons.camera_alt_rounded,
+                      //       color: Colors.pink, size: 21),
+                      // ),
+                      // SizedBox(width: 3),
+                      // InkWell(
+                      //   onTap: () {
+                      //     _pickImage(ImageSource.gallery);
+                      //   },
+                      //   child: Icon(Icons.photo, color: Colors.pink, size: 22),
+                      // ),
+                      // SizedBox(width: 3),
                       // InkWell(
                       //   onTap: () {
                       //     // Handle voice input

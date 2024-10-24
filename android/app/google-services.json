@@ -1,48 +1,40 @@
 {
   "project_info": {
-    "project_number": "821323672364",
-    "project_id": "abcdefg-c2895",
-    "storage_bucket": "abcdefg-c2895.appspot.com"
+    "project_number": "748350071630",
+    "project_id": "chatapp-10ca2",
+    "storage_bucket": "chatapp-10ca2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:821323672364:android:ad8313bec05e7bb4ab1a89",
+        "mobilesdk_app_id": "1:748350071630:android:2ad5c76af5e375a3bc341f",
         "android_client_info": {
-          "package_name": "com.example.love_tale"
+          "package_name": "com.app.love_tale"
         }
       },
       "oauth_client": [
         {
-          "client_id": "821323672364-8lvuohnpic10acdkn2khnk13hstf236m.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.love_tale",
-            "certificate_hash": "55962ae23d2edc2d33480936b8940e144700c545"
-          }
-        },
-        {
-          "client_id": "821323672364-1k8f9a2rhrqoh95t6oakm5kjiku98l0j.apps.googleusercontent.com",
+          "client_id": "748350071630-ikfvv2v04aqo5s0ec07i7cilokmoc1rt.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAIC5XI9P06oBWi1ZWhnYo72pd-pjI3udg"
+          "current_key": "AIzaSyAL0Exg2F7y0lTGFQd18BG3mlF4vf8hxOg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "821323672364-1k8f9a2rhrqoh95t6oakm5kjiku98l0j.apps.googleusercontent.com",
+              "client_id": "748350071630-ikfvv2v04aqo5s0ec07i7cilokmoc1rt.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "821323672364-2npq2msi9rru7urqhn1hjltsotdbv4l9.apps.googleusercontent.com",
+              "client_id": "748350071630-2cbbril6uhikm2glvrhrckgb2per3icj.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.loveTale"
+                "bundle_id": "com.mycompany.chatapp"
               }
             }
           ]
@@ -51,70 +43,34 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:821323672364:android:14a8ee4b325b469dab1a89",
+        "mobilesdk_app_id": "1:748350071630:android:89e5814db3053e06bc341f",
         "android_client_info": {
-          "package_name": "com.myblogapp.myblogapp"
+          "package_name": "com.mycompany.chatapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "821323672364-1k8f9a2rhrqoh95t6oakm5kjiku98l0j.apps.googleusercontent.com",
+          "client_id": "748350071630-ikfvv2v04aqo5s0ec07i7cilokmoc1rt.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAIC5XI9P06oBWi1ZWhnYo72pd-pjI3udg"
+          "current_key": "AIzaSyAL0Exg2F7y0lTGFQd18BG3mlF4vf8hxOg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "821323672364-1k8f9a2rhrqoh95t6oakm5kjiku98l0j.apps.googleusercontent.com",
+              "client_id": "748350071630-ikfvv2v04aqo5s0ec07i7cilokmoc1rt.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "821323672364-2npq2msi9rru7urqhn1hjltsotdbv4l9.apps.googleusercontent.com",
+              "client_id": "748350071630-2cbbril6uhikm2glvrhrckgb2per3icj.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.loveTale"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:821323672364:android:b94f76f7e3504a62ab1a89",
-        "android_client_info": {
-          "package_name": "com.tellme.tellme"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "821323672364-1k8f9a2rhrqoh95t6oakm5kjiku98l0j.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAIC5XI9P06oBWi1ZWhnYo72pd-pjI3udg"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "821323672364-1k8f9a2rhrqoh95t6oakm5kjiku98l0j.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "821323672364-2npq2msi9rru7urqhn1hjltsotdbv4l9.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.loveTale"
+                "bundle_id": "com.mycompany.chatapp"
               }
             }
           ]

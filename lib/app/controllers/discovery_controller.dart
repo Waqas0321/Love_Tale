@@ -45,7 +45,7 @@ class DiscoverGridController extends GetxController {
     },
   ].obs;
   RxBool isSelected = false.obs;
-  Rx<double> percentage= 0.6.obs;
+  Rx<double> percentage= 0.3.obs;
 
   var selectedIndex = (-1).obs;
   // Method to set selected index

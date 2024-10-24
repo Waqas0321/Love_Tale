@@ -3,20 +3,20 @@
     "platforms": {
       "android": {
         "default": {
-          "projectId": "abcdefg-c2895",
-          "appId": "1:821323672364:android:ad8313bec05e7bb4ab1a89",
+          "projectId": "chatapp-10ca2",
+          "appId": "1:748350071630:android:2ad5c76af5e375a3bc341f",
           "fileOutput": "android/app/google-services.json"
         }
       },
       "dart": {
         "lib/firebase_options.dart": {
-          "projectId": "abcdefg-c2895",
+          "projectId": "chatapp-10ca2",
           "configurations": {
-            "android": "1:821323672364:android:ad8313bec05e7bb4ab1a89",
-            "ios": "1:821323672364:ios:6fb7ea691a376c3bab1a89",
-            "macos": "1:821323672364:ios:6fb7ea691a376c3bab1a89",
-            "web": "1:821323672364:web:a9fd361be28eb5dfab1a89",
-            "windows": "1:821323672364:web:87b59fb62ff6d844ab1a89"
+            "android": "1:748350071630:android:2ad5c76af5e375a3bc341f",
+            "ios": "1:748350071630:ios:83e21fd36a64fc0bbc341f",
+            "macos": "1:748350071630:ios:83e21fd36a64fc0bbc341f",
+            "web": "1:748350071630:web:0e996412bf690914bc341f",
+            "windows": "1:748350071630:web:9c4d05a6d45004c1bc341f"
           }
         }
       }
@@ -28,6 +28,15 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
+  },
+  "dataconnect": {
+    "source": "dataconnect"
   }
 }

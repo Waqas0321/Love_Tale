@@ -132,37 +132,29 @@ class _DiscoverGridViewState extends State<DiscoverGridView> {
                                   ),
                                   SizedBox(height: 2),
                                   Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 18),
-                                      child: Container(
-                                        padding: EdgeInsets.symmetric(horizontal: 0,vertical: 2),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(),
-                                            borderRadius: BorderRadius.circular(32)
-                                        ),
-                                        child: Obx(
-                                          () =>  LinearPercentIndicator(
-                                            lineHeight: 14.0,
-                                            percent: controller.percentage.value, // Adjust this value dynamically based on the percentage
-                                            backgroundColor: Colors.white,
-                                            progressColor: Colors.pink,
-                                            barRadius: Radius.circular(32), // Rounded edges for the progress bar
-                                            center: Obx(
-                                             () =>  Text(
-                                                '${controller.percentage.value * 100}%', // Display percentage inside the bar
-                                                style: GoogleFonts.poppins(
-                                                  fontSize: 9.0,
-                                                  color:controller.percentage.value <= 0.55? Colors.black: Colors.white,
-                                                ),
-                                              ),
+                                    padding: const EdgeInsets.symmetric(horizontal: 9),
+                                    child: Obx(
+                                          () => LinearPercentIndicator(
+                                        lineHeight: 14.0,
+                                        width: 100,
+                                        percent: controller.percentage.value,
+                                        backgroundColor: Colors.grey,
+                                        progressColor: Colors.pink,
+                                        barRadius: Radius.circular(16),
+                                        center: Obx(
+                                              () => Text(
+                                            '${controller.percentage.value * 100}%',
+                                            style: GoogleFonts.poppins(
+                                              fontSize: 9.0,
+                                              color: controller.percentage.value <= 0.55 ? Colors.black : Colors.white,
                                             ),
-                                            linearStrokeCap: LinearStrokeCap.roundAll,
-                                            animation: true,
-                                            animationDuration: 1000,
                                           ),
                                         ),
-
+                                        animation: true,
+                                        animationDuration: 1000,
                                       ),
                                     ),
+                                  ),
                                   SizedBox(height: 1.0),
                                 ],
                               ),
