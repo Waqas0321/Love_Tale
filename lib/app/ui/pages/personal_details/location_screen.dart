@@ -70,6 +70,10 @@ class _LocationMapScreenState extends State<LocationMapScreen> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      appBar: AppBar(
+        foregroundColor: AppColors.pink,
+        backgroundColor: AppColors.white,
+      ),
       backgroundColor: AppColors.white,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -93,7 +97,6 @@ class _LocationMapScreenState extends State<LocationMapScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(height: 30),
               Text(
                 "Where do you live?",
                 style: GoogleFonts.poppins(fontSize: 21, fontWeight: FontWeight.w800),
@@ -102,6 +105,7 @@ class _LocationMapScreenState extends State<LocationMapScreen> {
               NovaPlacesAutocomplete(
                 radius: 20,
                 debounceTime: 2,
+                hintText: "Search Place",
                 apiKey: 'AIzaSyC_Rai9wBRnifJgkYzU4oK0YxyYnF5VnsE',
                 controller: _placesAutocompleteController,
                 detailRequired: true,

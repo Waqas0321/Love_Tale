@@ -1,8 +1,11 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:love_tale/Constants/love_tale_Sizes.dart';
 import 'package:love_tale/app/ui/pages/splash.dart';
 import 'package:love_tale/app/utils/const/app_color.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Splash1Screen extends StatefulWidget {
   const Splash1Screen({super.key});
@@ -42,26 +45,33 @@ class _Splash1ScreenState extends State<Splash1Screen> {
     _timer.cancel(); // Cancel the timer when the widget is disposed
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          gradient: AppColors.customGradient
-        ),
-        child: Center(
-          child: Image.asset(
-            'assets/images/logoImage.png',
-            height: 150,
-            width: 150,
-            fit: BoxFit.cover,
+    // if (kIsWeb) {
+    //   launch(
+    //     "https://love-tale-lp-ruqc.vercel.app/",
+    //     webOnlyWindowName: '_self',
+    //   );
+    //   return Container(); // Return an empty container since we're navigating away
+    // } else {
+      return Scaffold(
+        backgroundColor: Colors.black,
+        body: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            gradient: AppColors.customGradient,
+          ),
+          child: Center(
+            child: Image.asset(
+              'assets/images/logoImage.png',
+              height: 150,
+              width: 150,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
-      ),
-    );
-  }
+      );
+    }
+  // }
 }

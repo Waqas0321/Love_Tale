@@ -54,13 +54,6 @@ dependencies:
   speedometer_chart: ^1.0.8
   percent_indicator: ^4.2.3
   flutter_map_cancellable_tile_provider: ^3.0.2
-
-  #  multi_image_picker2: ^8.0.0
-
-  #  card_swiper: ^3.0.1
-#  flutter_location_search: ^1.0.0 # Use the appropriate version
-
-#  geolocator: ^9.0.2
   country_code_picker: ^3.0.0
   google_fonts:
   flutter_card_swiper: ^7.0.1

@@ -52,7 +52,7 @@ class RegisterScreen extends GetView<RegisterControler> {
                       ),
                       SizedBox(height: LoveTaleSizes.spaceBTWItems,),
                       Text(
-                        'Resister now',
+                        'Register now',
                         style: GoogleFonts.poppins(
                           fontSize: 23,
                           fontWeight: FontWeight.bold,
@@ -80,10 +80,30 @@ class RegisterScreen extends GetView<RegisterControler> {
                     width: contentWidth,
                     child: Column(
                       children: [
-                        SizedBox(height: LoveTaleSizes.spaceBTWItems,),
                         TextFormField(
                           decoration: InputDecoration(
                             labelText: 'Enter your email',
+                            labelStyle: TextStyle(
+                              color: Color(0xffd9d9d9),
+                              fontWeight: FontWeight.w800,
+                              fontSize: 15,
+                            ),
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                width: 0.5, // Set the desired border width
+                                style: BorderStyle.solid,
+                                color: Color(0xffd9d9d9),
+                              ),
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                          ),
+                          onChanged: (value) {},
+                        ),
+                        SizedBox(height: LoveTaleSizes.spaceBTWItems,),
+                        TextFormField(
+                          decoration: InputDecoration(
+                            labelText: 'Enter your password',
                             labelStyle: TextStyle(
                               color: Color(0xffd9d9d9),
                               fontWeight: FontWeight.w800,

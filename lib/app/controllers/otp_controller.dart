@@ -47,6 +47,14 @@ class OtpController extends GetxController {
       otpCode.value += digit;
     }
   }
+  void onBackspace() {
+    for (int i = otpCode.value.length - 1; i >= 0; i--) {
+      if (otpCode.value[i].isNotEmpty) {
+        otpCode.value = "";
+        break;
+      }
+    }
+  }
 
   void removeDigit() {
     if (otpCode.value.isNotEmpty) {

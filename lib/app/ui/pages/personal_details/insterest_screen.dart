@@ -32,6 +32,10 @@ class _InterestScreenState extends State<InterestScreen> {
         bool isMobile = _sizes.isMobileFun();
         bool isDesktop = _sizes.isDesktopFun();
         return  Scaffold(
+            appBar: AppBar(
+              foregroundColor: AppColors.pink,
+              backgroundColor: AppColors.white,
+            ),
           backgroundColor: AppColors.white,
           body:isMobile? SafeArea(
             child: Stack(

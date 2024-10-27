@@ -10,6 +10,7 @@ import 'package:love_tale/app/ui/pages/personal_details/insterest_screen.dart';
 import 'package:love_tale/app/ui/pages/personal_details/picture_upload_screen.dart';
 import 'package:love_tale/app/ui/pages/splash1.dart';
 import 'package:love_tale/firebase_options.dart';
+import 'Constants/love_tale_Sizes.dart';
 import 'app/bindings/app_bindings.dart';
 import 'app/data/routes/app_routes.dart';
 
@@ -24,6 +25,7 @@ void main() async{
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       // initialBinding:  AppBindings(), // Set the initial binding to initialize dependencies

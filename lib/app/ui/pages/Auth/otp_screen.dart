@@ -167,25 +167,37 @@ class OtpScreen extends StatelessWidget {
                           physics: NeverScrollableScrollPhysics(),
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 3,
-                            childAspectRatio:
-                                2.0, // Adjusted aspect ratio to fit within 70 height
+                            childAspectRatio: 2.0, // Adjusted aspect ratio to fit within 70 height
                           ),
                           itemCount: 12,
                           itemBuilder: (context, index) {
                             String text;
+                            Widget child;
                             Function onTap;
+
                             if (index < 9) {
                               text = '${index + 1}';
                               onTap = () => _controller.addDigit(text);
+                              child = Text(
+                                text,
+                                style: TextStyle(fontSize: 24, letterSpacing: 1.5),
+                              );
                             } else if (index == 9) {
-                              text = '*';
-                              onTap = () => _controller.addDigit(text);
+                              child = SizedBox.shrink();
+                              onTap = () {};
                             } else if (index == 10) {
                               text = '0';
                               onTap = () => _controller.addDigit(text);
+                              child = Text(
+                                text,
+                                style: TextStyle(fontSize: 24, letterSpacing: 1.5),
+                              );
                             } else {
-                              text = '#';
-                              onTap = () => _controller.addDigit(text);
+                              onTap = () => _controller.removeDigit();
+                              child = Icon(
+                                Icons.backspace, // Icon in place of #
+                                size: 24,
+                              );
                             }
 
                             return GestureDetector(
@@ -194,16 +206,10 @@ class OtpScreen extends StatelessWidget {
                                 height: 100,
                                 margin: EdgeInsets.only(left: 6, right: 6, top: 8),
                                 decoration: BoxDecoration(
-                                    // border: Border.all(color: Colors.grey),
-                                    // borderRadius: BorderRadius.circular(8),
-                                    ),
-                                child: Center(
-                                  child: Text(
-                                    text,
-                                    style:
-                                        TextStyle(fontSize: 24, letterSpacing: 1.5),
-                                  ),
+                                  // border: Border.all(color: Colors.grey),
+                                  // borderRadius: BorderRadius.circular(8),
                                 ),
+                                child: Center(child: child),
                               ),
                             );
                           },

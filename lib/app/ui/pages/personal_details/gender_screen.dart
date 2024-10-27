@@ -56,6 +56,10 @@ class _GenderScreenState extends State<GenderScreen> {
         bool isMobile = _sizes.isMobileFun();
         bool isDesktop = _sizes.isDesktopFun();
        return Scaffold(
+         appBar: AppBar(
+           foregroundColor: AppColors.pink,
+           backgroundColor: AppColors.white,
+         ),
           backgroundColor: AppColors.white,
           floatingActionButton: FloatingActionButton(
             onPressed: () {
