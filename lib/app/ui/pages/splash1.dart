@@ -47,13 +47,13 @@ class _Splash1ScreenState extends State<Splash1Screen> {
   }
   @override
   Widget build(BuildContext context) {
-    // if (kIsWeb) {
-    //   launch(
-    //     "https://love-tale-lp-ruqc.vercel.app/",
-    //     webOnlyWindowName: '_self',
-    //   );
-    //   return Container(); // Return an empty container since we're navigating away
-    // } else {
+    if (kIsWeb) {
+      launch(
+        "https://love-tale-lp-ruqc.vercel.app/",
+        webOnlyWindowName: '_self',
+      );
+      return Container(); // Return an empty container since we're navigating away
+    } else {
       return Scaffold(
         backgroundColor: Colors.black,
         body: Container(
@@ -73,5 +73,5 @@ class _Splash1ScreenState extends State<Splash1Screen> {
         ),
       );
     }
-  // }
+  }
 }
